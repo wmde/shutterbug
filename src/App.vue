@@ -1,29 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div id="app">
+        <Header></Header>
+        <sidebar></sidebar>
+        <stage></stage>
+    </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+	import Vue from 'vue';
+	import Header from '@/components/Header.vue';
+	import Sidebar from '@/components/Sidebar.vue';
+	import Stage from "@/components/Stage.vue";
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+	export default Vue.extend( {
+		name: 'App',
+		components: {
+			Stage,
+			Header,
+            Sidebar
+		}
+	} );
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    @import 'src/assets/reset';
+    @import 'src/assets/global';
+
+    #app {
+
+    }
 </style>

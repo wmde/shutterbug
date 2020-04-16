@@ -1,0 +1,12 @@
+@import "settings";
+
+* {
+	font-family: $font-family;
+	vertical-align: baseline;
+}
+
+img {
+	display: inline-block;
+	width: 100%;
+	height: auto;
+}
