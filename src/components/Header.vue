@@ -2,26 +2,19 @@
     <header class="header">
         <div class="header--main">
             <div class="logo">
-                <icon class="logo--icon"></icon> Shutterbug
+                <icon class="logo--icon" icon="camera"></icon> Shutterbug
             </div>
             <zoom></zoom>
-        </div>
-        <div class="header--sub">
-            <a href="#" class="sidebar-button">
-                <Icon class="sidebar-button--icon"></Icon>
-            </a>
-            <XAxis></XAxis>
         </div>
     </header>
 </template>
 
 <script>
 	import Zoom from "@/components/Zoom";
-	import XAxis from "@/components/XAxis";
 	import Icon from "@/components/Icon";
 	export default {
 		name: "Header",
-		components: { Icon, XAxis, Zoom }
+		components: { Icon, Zoom }
 	}
 </script>
 
@@ -35,18 +28,10 @@
         height: $header-height;
         z-index: 99;
 
-        &--main, &--sub {
-            height: $axis-size;
-            line-height: $axis-size;
-        }
-
         &--main {
+            line-height: $header-height;
+            height: $header-height;
             background: $header-background;
-        }
-
-        &--sub {
-            background: $axis-background-color;
-            position: relative;
         }
     }
 
@@ -56,22 +41,11 @@
         font-size: 20px;
 
         &--icon {
-            width: 40px;
-            height: 40px;
-        }
-    }
-
-    .sidebar-button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: $axis-size;
-        width: $axis-size;
-        background: $sidebar-button-background;
-
-        &--icon {
-            height: 40px;
-            width: 40px;
+            display: block;
+            float: left;
+            width: $header-height;
+            height: $header-height;
+            margin-right: $stage-gutter/2;
         }
     }
 </style>

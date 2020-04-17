@@ -16,6 +16,9 @@
 
     .x-axis {
         height: $axis-size;
+        line-height: $axis-size;
+        background: $axis-background-color;
+        font-size: 16px;
 
         > div {
             display: inline-block;

@@ -1,13 +1,18 @@
 <template>
-    <img src="https://www.placecage.com/g/40/40" alt="Temp">
+    <svg class="icon">
+        <use v-bind="{ 'xlink:href': '/icons/symbol-defs.svg#icon-' + icon }"></use>
+    </svg>
 </template>
 
 <script>
 	export default {
-		name: "Icon"
+		name: "Icon",
+        props: ["icon"]
 	}
 </script>
 
-<style scoped>
-
+<style lang="scss">
+    .icon {
+        display: inline-block;
+    }
 </style>
