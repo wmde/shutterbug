@@ -1,14 +1,16 @@
 <template>
-    <div class="title-row">
-        <div class="title-row--label">
-            <icon class="title-row--icon" icon="ie11"></icon>
-        </div>
-        <div class="title-row--column-label">
-            <div>
+    <tr class="title-row">
+        <td class="title-row--label">
+            <div class="title-row--icon">
+                <Icon icon="ie11"></Icon>
+            </div>
+        </td>
+        <td colspan="3">
+            <div class="title-row--column-label">
                 Internet Explorer
             </div>
-        </div>
-    </div>
+        </td>
+    </tr>
 </template>
 
 <script>
@@ -23,30 +25,34 @@
     @import "src/assets/settings";
 
     .title-row {
-        position: relative;
-        height: 70px;
-        line-height: 70px;
         border-top: 1px solid $border-color;
-        padding-left: $axis-size + ($stage-gutter/2);
 
         &--label {
-            position: absolute;
-            left: 0;
             width: $axis-size;
-            height: 100%;
             background: $axis-background-color;
             color: $axis-color;
         }
 
         &--column-label {
+            line-height: 70px;
             font-weight: bold;
             font-size: 12px;
+            padding-left: $stage-gutter / 2;
         }
 
         &--icon {
-            height: 20px;
-            width: 20px;
-            margin: 20px;
+            position: relative;
+            line-height: 70px;
+            .icon {
+                position: absolute;
+                display: block;
+                height: 20px;
+                width: 20px;
+                top: 50%;
+                left: 50%;
+                margin-top: -14px;
+                margin-left: -10px;
+            }
         }
     }
 </style>
