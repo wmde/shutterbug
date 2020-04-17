@@ -1,15 +1,21 @@
 <template>
     <div class="stage" v-bind:class="{'sidebar-is-visible' : sidebarIsVisible}">
         <div class="stage--content">
-            <x-axis-row v-bind:sidebar-is-visible="sidebarIsVisible" v-on:toggle-sidebar="$emit('toggle-sidebar')"></x-axis-row>
-            <title-row></title-row>
-            <row></row>
-            <row></row>
-            <row></row>
-            <title-row></title-row>
-            <row></row>
-            <row></row>
-            <row></row>
+            <table class="stage--table">
+                <thead>
+                    <XAxisRow></XAxisRow>
+                </thead>
+                <tbody>
+                    <title-row></title-row>
+                    <row></row>
+                    <row></row>
+                    <row></row>
+                    <title-row></title-row>
+                    <row></row>
+                    <row></row>
+                    <row></row>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -37,12 +43,20 @@
 
         transition: margin-left $transition-ease;
 
+        &.sidebar-is-visible {
+            margin-left: $sidebar-width;
+        }
+
         &--content {
             margin-top: $header-height;
         }
 
-        &.sidebar-is-visible {
-            margin-left: $sidebar-width;
+        &--table {
+            border-collapse: collapse;
+            caption, tbody, tfoot, thead, tr, th, td {
+                margin: 0;
+                outline: 0;
+            }
         }
     }
 </style>

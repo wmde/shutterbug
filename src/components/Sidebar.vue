@@ -54,6 +54,7 @@
         &--button {
             background: $sidebar-button-background;
             color: $sidebar-button-color;
+            font-family: $font-family;
             font-weight: bold;
             display: block;
             border: 0;
@@ -84,6 +85,7 @@
             border: 1px solid $sidebar-background;
             width: 100%;
             padding: 10px;
+            font-family: $font-family;
 
             -moz-appearance: none;
             -webkit-appearance: none;

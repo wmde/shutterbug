@@ -1,17 +1,21 @@
 <template>
-    <div class="row">
-        <div class="row--label">
-            <span class="row--label-text">1024</span>
-        </div>
-        <div class="row--columns">
-            <div>
+    <tr class="row">
+        <td class="row--label">
+            <div class="row--label-content">
+                <span class="row--label-text">1024</span>
+            </div>
+        </td>
+        <td class="row--screenshot">
+            <div class="row--screenshot-content">
                 <img src="https://www.placecage.com/g/1280/960" alt="I am an image">
             </div>
-            <div>
+        </td>
+        <td class="row--screenshot">
+            <div class="row--screenshot-content">
                 <img src="https://www.placecage.com/g/1280/960" alt="I am an image">
             </div>
-        </div>
-    </div>
+        </td>
+    </tr>
 </template>
 
 <script>
@@ -24,16 +28,20 @@
     @import "src/assets/settings";
 
     .row {
-        position: relative;
         padding-bottom: $row-padding;
 
         &--label {
-            position: absolute;
-            width: $axis-size;
-            height: 100%;
+            position: relative;
             background: $axis-background-color;
-            color: $axis-color;
-            padding-bottom: $row-padding;
+
+            &-content {
+                position: absolute;
+                width: $axis-size;
+                height: 100%;
+                color: $axis-color;
+                padding-bottom: $row-padding;
+                top: 0;
+            }
 
             &-text {
                 position: absolute;
@@ -52,13 +60,21 @@
 
         }
 
-        &--columns {
-            padding: 0 $axis-size;
+        &--screenshot {
+            padding-bottom: 60px;
 
-            > div {
+            &:first-of-type {
+                padding-left: $stage-gutter/2;
+            }
+
+            &:last-of-type {
+                padding-right: $stage-gutter/2;
+            }
+
+            &-content {
                 padding: 0 ($stage-gutter/2);
-                display: inline-block;
-                width: 50%;
+                display: block;
+                width: 100%;
             }
         }
     }
