@@ -32,10 +32,11 @@
 
         &--label {
             position: relative;
+            width: $axis-size;
             background: $axis-background-color;
 
             &-content {
-                position: absolute;
+                position: static;
                 width: $axis-size;
                 height: 100%;
                 color: $axis-color;

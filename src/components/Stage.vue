@@ -6,7 +6,7 @@
                     <XAxisRow></XAxisRow>
                 </thead>
                 <tbody>
-                    <row v-for="( testcases, index) in grid" :testcases="testcases" :grid="grid" :colNumber="index" :key="index"></row>
+                    <row v-for="( testcases, index ) in grid" :testcases="testcases" :grid="grid" :colNumber="index" :key="index"></row>
                 </tbody>
             </table>
         </div>
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-	import TitleRow from "@/components/TitleRow";
 	import Row from "@/components/Row";
 	import XAxisRow from "@/components/XAxisRow";
 
@@ -46,6 +45,8 @@
 
         &--table {
             border-collapse: collapse;
+            table-layout: fixed;
+
             caption, tbody, tfoot, thead, tr, th, td {
                 margin: 0;
                 outline: 0;

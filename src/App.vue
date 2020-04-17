@@ -21,7 +21,6 @@
         selectedDimensions: string[];
     }
 
-    import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
 	import SidebarToggle from "@/components/SidebarToggle.vue";
     import {createGrid} from "@/model/createGrid";
 
@@ -34,7 +33,6 @@
 			Sidebar
 		},
         setup() {
-			const metaData = MetaData;
             const sidebarIsVisible = ref(false);
             const onToggleSidebar = function () {
                 sidebarIsVisible.value = !sidebarIsVisible.value;
@@ -72,7 +70,6 @@
             });
             // TODO create computed property of row header labels, based on metaDataState.selectedDimensions and length of dimensions values
             return {
-				metaData,
                 sidebarIsVisible,
                 onToggleSidebar,
                 grid,
