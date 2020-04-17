@@ -5,6 +5,7 @@ $axis-size: 60px;
 $row-padding: 60px;
 $stage-padding: 24px;
 $stage-gutter: 60px;
+$sidebar-width: 260px;
 
 // Colours
 $font-color-light: #fff;
@@ -13,4 +14,10 @@ $axis-background-color: #F2F2F2;
 $axis-color: #000;
 $border-color: #e0e0e0;
 $header-background: #000;
-$sidebar-button-background: #000;
+$sidebar-background : #0D0D0D;
+$sidebar-toggle-background: #000;
+$sidebar-button-background: #FFCC00;
+$sidebar-button-color: #000;
+
+
+$transition-ease: 500ms cubic-bezier(0.420, 0.000, 0.110, 0.995);

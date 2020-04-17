@@ -14,7 +14,7 @@
 	import Icon from "@/components/Icon";
 	export default {
 		name: "Header",
-		components: { Icon, Zoom }
+		components: { Icon, Zoom },
 	}
 </script>
 
@@ -43,8 +43,10 @@
         &--icon {
             display: block;
             float: left;
-            width: $header-height;
-            height: $header-height;
+            width: 30px;
+            height: 27px;
+            margin-top: 16px;
+            margin-left: 15px;
             margin-right: $stage-gutter/2;
         }
     }

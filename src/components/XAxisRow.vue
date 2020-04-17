@@ -1,8 +1,8 @@
 <template>
     <div class="x-axis-row">
-        <a href="#" class="sidebar-button">
-            <Icon class="sidebar-button--icon"></Icon>
-        </a>
+        <button class="sidebar-toggle" v-on:click="$emit('toggle-sidebar')" v-bind:class="{'sidebar-is-visible' : sidebarIsVisible}">
+            <Icon icon="settings" class="sidebar-toggle--icon"></Icon>
+        </button>
         <XAxis></XAxis>
     </div>
 </template>
@@ -13,7 +13,8 @@
 
 	export default {
 		name: "XAxisRow",
-		components: { Icon, XAxis }
+		components: { Icon, XAxis },
+		props : [ 'sidebarIsVisible' ]
 	}
 </script>
 
@@ -24,18 +25,31 @@
         position: relative;
     }
 
-    .sidebar-button {
+    .sidebar-toggle {
+        border-collapse: collapse;
         position: fixed;
+        display: block;
         top: $header-height;
         left: 0;
         height: $axis-size;
         width: $axis-size;
-        background: $sidebar-button-background;
+        background: $sidebar-toggle-background;
         z-index: 99;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        transition: left $transition-ease;
+
+        &.sidebar-is-visible {
+            left: $sidebar-width;
+        }
 
         &--icon {
-            height: 40px;
-            width: 40px;
+            width: 30px;
+            height: 27px;
+            margin-top: 3px;
+            margin-left: 2px;
         }
     }
 
