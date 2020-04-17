@@ -1,18 +1,17 @@
 <template>
     <tr class="row">
+        <!-- TODO array of headers label will be passed as prop in from parent & rendered, replacing TitleRow -->
         <td class="row--label">
             <div class="row--label-content">
                 <span class="row--label-text">1024</span>
             </div>
         </td>
-        <td class="row--screenshot">
+
+        <td class="row--screenshot" v-for="testcase in testcases" v-bind:key="testcase.screenshotFilename">
             <div class="row--screenshot-content">
-                <img src="https://www.placecage.com/g/1280/960" alt="I am an image">
-            </div>
-        </td>
-        <td class="row--screenshot">
-            <div class="row--screenshot-content">
-                <img src="https://www.placecage.com/g/1280/960" alt="I am an image">
+                <div>{{testcase.screenshotFilename}}</div>
+                <img v-if="testcase.isValid" :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
+                <span v-else>{{testcase.invalidReason}}</span>
             </div>
         </td>
     </tr>
@@ -20,7 +19,8 @@
 
 <script>
 	export default {
-		name: "Row"
+		name: "Row",
+        props: ['testcases']
 	}
 </script>
 

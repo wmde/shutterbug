@@ -6,14 +6,7 @@
                     <XAxisRow></XAxisRow>
                 </thead>
                 <tbody>
-                    <title-row></title-row>
-                    <row></row>
-                    <row></row>
-                    <row></row>
-                    <title-row></title-row>
-                    <row></row>
-                    <row></row>
-                    <row></row>
+                    <row v-for="( testcases, index) in grid" :testcases="testcases" :grid="grid" :colNumber="index" :key="index"></row>
                 </tbody>
             </table>
         </div>
@@ -27,8 +20,8 @@
 
 	export default {
 		name: "Stage",
-		components: { XAxisRow, Row, TitleRow },
-		props : [ 'sidebarIsVisible' ]
+		components: { XAxisRow, Row },
+		props : [ 'sidebarIsVisible', 'grid' ]
 	}
 </script>
 

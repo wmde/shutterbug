@@ -3,7 +3,7 @@
         <Header></Header>
         <SidebarToggle v-bind:sidebar-is-visible="sidebarIsVisible" v-on:toggle-sidebar="onToggleSidebar"></SidebarToggle>
         <sidebar v-bind:sidebar-is-visible="sidebarIsVisible"></sidebar>
-        <stage v-bind:sidebar-is-visible="sidebarIsVisible"></stage>
+        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid"></stage>
     </div>
 </template>
 
@@ -11,11 +11,19 @@
 	import Header from '@/components/Header.vue';
 	import Sidebar from '@/components/Sidebar.vue';
 	import Stage from "@/components/Stage.vue";
+    import {computed, defineComponent, reactive, ref, toRefs, watchEffect} from '@vue/composition-api';
+    import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
+    import { BROWSER } from "@/model/Dimensions";
 
-    import {defineComponent, ref} from '@vue/composition-api';
+    interface MetadataState {
+        isLoading: boolean;
+        metaData: ScreenshotMetaData | null;
+        selectedDimensions: string[];
+    }
 
     import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
 	import SidebarToggle from "@/components/SidebarToggle.vue";
+    import {createGrid} from "@/model/createGrid";
 
 	export default defineComponent( {
 		name: 'App',
@@ -31,10 +39,44 @@
             const onToggleSidebar = function () {
                 sidebarIsVisible.value = !sidebarIsVisible.value;
             };
+
+
+            const metaDataInit: MetadataState = {
+                isLoading: true,
+                metaData: null,
+                selectedDimensions: [ BROWSER ]
+
+            };
+            const metaDataState = reactive( metaDataInit );
+            watchEffect(() => {
+                fetch( 'screenshots/metadata.json' )
+                .then( response => response.json() )
+                .then( metaDataObj =>  {
+                    metaDataState.metaData = ScreenshotMetaData.fromObject( metaDataObj );
+                    metaDataState.isLoading = false;
+                })
+                .catch( e => {
+                    console.log("there was an error", e)
+                } )
+            });
+            const grid = computed(() => {
+                if( metaDataState.metaData === null) {
+                    return [];
+                }
+                const selectedRows = metaDataState.metaData.getDimensionSubset( metaDataState.selectedDimensions );
+
+                // TODO expose UI for ordering or selection, for now we just take them as-is
+                const orderRows = metaDataState.metaData.getRemainingDimensions( metaDataState.selectedDimensions );
+
+                return createGrid( metaDataState.metaData.testCases, selectedRows, orderRows);
+            });
+            // TODO create computed property of row header labels, based on metaDataState.selectedDimensions and length of dimensions values
             return {
 				metaData,
                 sidebarIsVisible,
-                onToggleSidebar
+                onToggleSidebar,
+                grid,
+                ...toRefs( metaDataState )
             }
         },
 	} );

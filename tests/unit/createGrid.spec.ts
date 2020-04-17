@@ -7,7 +7,7 @@ describe('createGrid', () => {
 
     const buf = fs.readFileSync( __dirname + '/example_metadata.json' );
     const metaData = ScreenshotMetaData.fromObject( JSON.parse( buf.toString() ) );
-    const testCases = metaData.testcases;
+    const testCases = metaData.testCases;
 
     it( 'can create a grid from banner dimension', () => {
         const rowDimensions = metaData.getDimensionSubset([RESOLUTION]) ;
