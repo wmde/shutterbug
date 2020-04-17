@@ -1,6 +1,6 @@
 import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
 import {ScreenshotMetaDataJsonInterface} from "@/model/ScreenshotMetaDataJsonInterface";
-import {BANNER, BROWSER} from "@/model/Dimensions";
+import {BANNER, BROWSER, OPERATING_SYSTEM, RESOLUTION} from "@/model/Dimensions";
 
 describe('ScreenshotMetaData', () => {
 
@@ -74,7 +74,7 @@ describe('ScreenshotMetaData', () => {
             expect( metaData.createdOn ).toStrictEqual( new Date(1234) );
             expect( metaData.campaign ).toBe( '00-ba-200416');
             expect( metaData.dimensions.size ).toBe( 4 );
-            expect( metaData.testcases.length ).toBe( 1 );
+            expect( metaData.testCases.length ).toBe( 1 );
         });
 
         xit('validates dimensions', () => {
@@ -95,5 +95,13 @@ describe('ScreenshotMetaData', () => {
             "safari",
             "chrome"
         ] )
+    })
+
+    it('can get the remaining dimensions', () => {
+        const metaData = ScreenshotMetaData.fromObject( rawData );
+
+        const remaining = metaData.getRemainingDimensions( [ BANNER, BROWSER ] );
+
+        expect( remaining ).toStrictEqual( [ OPERATING_SYSTEM, RESOLUTION] );
     })
 });
