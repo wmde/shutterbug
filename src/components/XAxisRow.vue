@@ -1,15 +1,15 @@
 <template>
     <tr class="x-axis-row">
         <th></th>
-        <th>CTRL</th>
-        <th>VAR</th>
+        <th v-for="(label, index) in labels" :key="index">{{ label }}</th>
     </tr>
 </template>
 
 <script>
 
 	export default {
-		name: "XAxisRow"
+		name: "XAxisRow",
+        props: ['labels'],
 	}
 </script>
 

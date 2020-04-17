@@ -3,7 +3,7 @@
         <!-- TODO array of headers label will be passed as prop in from parent & rendered, replacing TitleRow -->
         <td class="row--label">
             <div class="row--label-content">
-                <span class="row--label-text">1024</span>
+                <span class="row--label-text">{{ label }}</span>
             </div>
         </td>
 
@@ -20,7 +20,7 @@
 <script>
 	export default {
 		name: "Row",
-        props: ['testcases']
+        props: ['testcases', 'label']
 	}
 </script>
 

@@ -3,10 +3,10 @@
         <div class="stage--content">
             <table class="stage--table">
                 <thead>
-                    <XAxisRow></XAxisRow>
+                    <XAxisRow v-bind:labels="grid.labels"></XAxisRow>
                 </thead>
                 <tbody>
-                    <row v-for="( testcases, index ) in grid" :testcases="testcases" :grid="grid" :colNumber="index" :key="index"></row>
+                    <row v-for="( testcases, index ) in grid.rows" :testcases="testcases" :grid="grid" :label="grid.ylabels[index]" :colNumber="index" :key="index"></row>
                 </tbody>
             </table>
         </div>
