@@ -3,7 +3,7 @@
         <Header></Header>
         <SidebarToggle v-bind:sidebar-is-visible="sidebarIsVisible" v-on:toggle-sidebar="onToggleSidebar"></SidebarToggle>
         <sidebar v-bind:sidebar-is-visible="sidebarIsVisible"></sidebar>
-        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid"></stage>
+        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid" v-bind:rowHeaders="rowHeaders"></stage>
     </div>
 </template>
 
@@ -13,7 +13,12 @@
 	import Stage from "@/components/Stage.vue";
     import {computed, defineComponent, reactive, ref, toRefs, watchEffect} from '@vue/composition-api';
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import { BROWSER } from "@/model/Dimensions";
+    import {BROWSER, RESOLUTION} from "@/model/Dimensions";
+    import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
+	import SidebarToggle from "@/components/SidebarToggle.vue";
+    import {createGrid} from "@/model/createGrid";
+    import {createRowHeaders} from "@/model/createRowHeaders";
+    import {RowHeader} from "@/model/RowHeader";
 
     interface MetadataState {
         isLoading: boolean;
@@ -21,11 +26,7 @@
         selectedDimensions: string[];
     }
 
-    import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
-	import SidebarToggle from "@/components/SidebarToggle.vue";
-    import {createGrid} from "@/model/createGrid";
-
-	export default defineComponent( {
+    export default defineComponent( {
 		name: 'App',
 		components: {
 			SidebarToggle,
@@ -44,7 +45,7 @@
             const metaDataInit: MetadataState = {
                 isLoading: true,
                 metaData: null,
-                selectedDimensions: [ BROWSER ]
+                selectedDimensions: [ BROWSER, RESOLUTION ]
 
             };
             const metaDataState = reactive( metaDataInit );
@@ -70,12 +71,21 @@
 
                 return createGrid( metaDataState.metaData.testCases, selectedRows, orderRows);
             });
-            // TODO create computed property of row header labels, based on metaDataState.selectedDimensions and length of dimensions values
+            const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
+                if( metaDataState.metaData === null) {
+                    return [];
+                }
+                return createRowHeaders(metaDataState.metaData.getDimensionSubset( metaDataState.selectedDimensions ) );
+            } );
+
+            // TODO create computed property of column header labels, based on metaDataState.selectedDimensions
+
             return {
 				metaData,
                 sidebarIsVisible,
                 onToggleSidebar,
                 grid,
+                rowHeaders,
                 ...toRefs( metaDataState )
             }
         },

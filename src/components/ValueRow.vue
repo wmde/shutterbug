@@ -1,9 +1,9 @@
 <template>
     <tr class="row">
-        <!-- TODO array of headers label will be passed as prop in from parent & rendered, replacing TitleRow -->
+
         <td class="row--label">
             <div class="row--label-content">
-                <span class="row--label-text">1024</span>
+                <span class="row--label-text">{{ header.label }}</span>
             </div>
         </td>
 
@@ -18,9 +18,14 @@
 </template>
 
 <script>
+	import {RowHeader} from "@/model/RowHeader";
+
 	export default {
-		name: "Row",
-        props: ['testcases']
+		name: "ValueRow",
+        props: {
+			testcases: Array,
+			header: RowHeader
+		}
 	}
 </script>
 
