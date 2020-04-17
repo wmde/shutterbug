@@ -1,41 +1,13 @@
 import {ALLOWED_DIMENSIONS} from "./Dimensions";
 import {TestCaseJsonInterface} from "@/model/TestCaseJsonInterface";
 
-
 export class TestCase {
-    private readonly valid: boolean;
-    private readonly invalidReason: string;
-    private readonly dimensions: Map<string, string>;
-    private readonly bannerUrl: string;
-    private readonly screenshotFilename: string;
-    constructor( dimensions: Map<string,string>, bannerUrl: string, invalidReason = '' ) {
-        this.dimensions = dimensions;
-        this.bannerUrl = bannerUrl;
+    readonly isValid: boolean;
+    readonly screenshotFilename: string;
+
+    constructor( readonly dimensions: Map<string,string>, readonly bannerUrl: string, readonly invalidReason = '' ) {
         this.screenshotFilename = [ ...dimensions.values() ].join( '__' ) + '.png';
-        this.valid = invalidReason === '';
-        this.invalidReason = invalidReason
-    }
-
-    isValid(): boolean {
-        return this.valid;
-    }
-
-    get getInvalidReason(): string {
-        return this.invalidReason;
-    }
-
-
-    getBannerUrl(): string {
-        return this.bannerUrl;
-    }
-
-
-    getScreenshotFilename(): string {
-        return this.screenshotFilename;
-    }
-
-    getDimensions(): Map<string,string> {
-        return this.dimensions;
+        this.isValid = invalidReason === '';
     }
 
     getDimension( name: string ): string {
