@@ -1,0 +1,1000 @@
+{
+	"createdOn": 1587128758889,
+	"campaign": "00-ba-200416",
+	"dimensions": [
+		[
+			"operating_system",
+			[
+				"win10",
+				"win7",
+				"macos",
+				"linux"
+			]
+		],
+		[
+			"browser",
+			[
+				"edge",
+				"ie11",
+				"firefox",
+				"safari",
+				"chrome"
+			]
+		],
+		[
+			"resolution",
+			[
+				"1024x768",
+				"1280x960"
+			]
+		],
+		[
+			"banner",
+			[
+				"ctrl"
+			]
+		]
+	],
+	"testCases": [
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__edge__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__edge__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__ie11__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__ie11__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__firefox__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__firefox__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__safari__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__safari__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__chrome__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win10"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win10__chrome__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__edge__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__edge__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__ie11__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__ie11__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__firefox__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__firefox__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__safari__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__safari__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__chrome__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"win7"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "win7__chrome__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__edge__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__edge__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__ie11__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__ie11__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__firefox__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__firefox__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__safari__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__safari__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__chrome__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"macos"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "macos__chrome__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__edge__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"edge"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__edge__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__ie11__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"ie11"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__ie11__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__firefox__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"firefox"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__firefox__1280x960__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__safari__1024x768__ctrl.png"
+		},
+		{
+			"valid": false,
+			"invalidReason": "This operating system is not compatible with browser",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"safari"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__safari__1280x960__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1024x768"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__chrome__1024x768__ctrl.png"
+		},
+		{
+			"valid": true,
+			"invalidReason": "",
+			"dimensions": [
+				[
+					"operating_system",
+					"linux"
+				],
+				[
+					"browser",
+					"chrome"
+				],
+				[
+					"resolution",
+					"1280x960"
+				],
+				[
+					"banner",
+					"ctrl"
+				]
+			],
+			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"screenshotFilename": "linux__chrome__1280x960__ctrl.png"
+		}
+	]
+}

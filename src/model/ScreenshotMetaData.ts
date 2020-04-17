@@ -15,4 +15,10 @@ export class ScreenshotMetaData {
         const testCases = obj.testCases.map( testCaseObj => TestCase.fromObject( testCaseObj ) );
         return new ScreenshotMetaData( new Date( obj.createdOn ), obj.campaign, dimensions, testCases );
     }
+
+    getDimensionSubset( dimensionNames: string[] ): Map<string,string[]> {
+        const subset = new Map<string,string[]>();
+        dimensionNames.forEach( name => subset.set( name, this.dimensions.get( name ) || [] ) );
+        return subset;
+    }
 }
