@@ -2,12 +2,12 @@
     <tr class="title-row">
         <td class="title-row--label">
             <div class="title-row--icon">
-                <Icon icon="ie11"></Icon>
+                <Icon :icon="header.label"></Icon>
             </div>
         </td>
-        <td colspan="3">
+        <td :colspan="columns">
             <div class="title-row--column-label">
-                Internet Explorer
+                {{ header.label}}
             </div>
         </td>
     </tr>
@@ -15,9 +15,14 @@
 
 <script>
 	import Icon from "@/components/Icon";
+	import {RowHeader} from "@/model/RowHeader";
 	export default {
 		name: "TitleRow",
-		components: { Icon }
+		components: { Icon },
+        props: {
+			header: RowHeader,
+            columns: Number
+        }
 	}
 </script>
 

@@ -8,8 +8,8 @@ type FixedLengthArray<T extends any[]> =
     & { [Symbol.iterator]: () => IterableIterator< ArrayItems<T> > }
 
 export interface ScreenshotMetaDataJsonInterface {
-    createdOn: number,
-    campaign: string,
-    dimensions: Array<FixedLengthArray<[string, string[]]>>,
-    testCases: TestCaseJsonInterface[]
+    createdOn: number;
+    campaign: string;
+    dimensions: Array<FixedLengthArray<[string, string[]]>>;
+    testCases: TestCaseJsonInterface[];
 }

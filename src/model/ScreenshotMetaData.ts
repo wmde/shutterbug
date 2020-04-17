@@ -1,7 +1,6 @@
 import {TestCase} from "@/model/TestCase";
 import {ScreenshotMetaDataJsonInterface} from "@/model/ScreenshotMetaDataJsonInterface";
-
-type DimensionMap = Map<string, string[]>
+import {DimensionMap} from "@/model/Dimensions";
 
 export class ScreenshotMetaData {
     constructor( readonly createdOn: Date, readonly campaign: string, readonly dimensions: DimensionMap, readonly testCases: TestCase[]) {

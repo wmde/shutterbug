@@ -6,3 +6,5 @@ export const OPERATING_SYSTEM = 'operating_system';
 export const ORIENTATION = 'orientation';
 export const RESOLUTION = 'resolution';
 export const ALLOWED_DIMENSIONS = [BANNER, BROWSER, DEVICE, OPERATING_SYSTEM, ORIENTATION, RESOLUTION];
+
+export type DimensionMap = Map<string,string[]>
