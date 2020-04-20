@@ -4,17 +4,15 @@
             <div class="logo">
                 <icon class="logo--icon" icon="camera"></icon> Shutterbug
             </div>
-            <zoom></zoom>
         </div>
     </header>
 </template>
 
 <script>
-	import Zoom from "@/components/Zoom";
 	import Icon from "@/components/Icon";
 	export default {
 		name: "Header",
-		components: { Icon, Zoom },
+		components: { Icon },
 	}
 </script>
 

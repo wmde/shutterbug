@@ -9,10 +9,13 @@ const Row = Vue.extend({
     props: {
         headers: Array,
         testcases: Array,
-        contextInfo: Array,
+        rowIndex: Number,
+        contextInfo: Array
     },
     render: function (createElement, context): VNode[] {
         const headerLength = context.props.headers.length;
+        const listeners = context.listeners;
+        const openSlideshow = listeners['open-slideshow'];
         const elements = [];
         // Add additional title rows when the headers have more than 1 element, indicating the start of a new "subsection"
         for (let i = 0; i < Math.min(headerLength - 1, MAX_HEADERS ); i++) {
@@ -27,7 +30,11 @@ const Row = Vue.extend({
                 props: {
                     testcases: context.props.testcases,
                     header: context.props.headers[headerLength - 1],
+                    rowIndex: context.props.rowIndex,
                     'context-info': context.props.contextInfo,
+                },
+                on: {
+                    'open-slideshow':  openSlideshow
                 }
             })
         );
