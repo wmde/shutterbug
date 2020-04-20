@@ -6,6 +6,7 @@
                  :testcases="testcases"
                  :key="index"
                  :headers="rowHeaders[index]"
+                 :context-info="contextInfo"
             />
         </div>
     </div>
@@ -22,7 +23,8 @@
 			sidebarIsVisible: Boolean,
 			grid: Array,
             rowHeaders: Array,
-            columnHeaders: Array
+            columnHeaders: Array,
+            contextInfo: Array,
 		}
 	}
 </script>
