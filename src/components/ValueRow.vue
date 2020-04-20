@@ -14,7 +14,7 @@
             <div class="row--screenshot-content">
                 <div v-if="testcase.isValid">
                     <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
-                    <div class="row--screenshot-metadata">Resolution: 1024x768</div>
+                    <div v-for="dimensionName in contextInfo" :key="dimensionName" class="row--screenshot-metadata">{{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}</div>
                 </div>
                 <div v-else class="row--screenshot-invalid-reason">
                     <div class="row--screenshot-invalid-reason-text">{{testcase.invalidReason}}</div>
@@ -32,7 +32,11 @@
 		name: "ValueRow",
         props: {
 			testcases: Array,
-			header: RowHeader
+			header: RowHeader,
+            contextInfo: {
+				type: Array,
+                default: () => []
+            }
 		}
 	}
 </script>

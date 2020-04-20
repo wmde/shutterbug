@@ -19,6 +19,7 @@
                 v-bind:grid="grid"
                 v-bind:row-headers="rowHeaders"
                 v-bind:column-headers="columnHeaders"
+                v-bind:context-info="contextInfo"
         ></stage>
 
     </div>
@@ -35,6 +36,7 @@
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
     import {RowHeader} from "@/model/RowHeader";
+    import {MAX_HEADERS} from "@/components/Row";
 
     interface MetadataState {
         isLoading: boolean;
@@ -78,20 +80,43 @@
                     console.log("there was an error", e)
                 } )
             });
+            const yAxisDimensions = computed<Map<string,string[]>>( (): Map<string,string[]> => {
+                if( metaDataState.metaData === null) {
+                    return new Map<string, string[]>();
+                }
+                return metaDataState.metaData.getDimensionSubset( metaDataState.metaData.getRemainingDimensions( [ metaDataState.selectedXDimension ] ) );
+            } );
+
             const grid = computed(() => {
                 if( metaDataState.metaData === null) {
                     return [];
                 }
 
-                const selectedRows = metaDataState.metaData.getDimensionSubset( metaDataState.metaData.getRemainingDimensions( [ metaDataState.selectedXDimension ] ) );
-
-                return createGrid( metaDataState.metaData.testCases, selectedRows, metaDataState.selectedYSortOrder );
+                return createGrid( metaDataState.metaData.testCases, (yAxisDimensions.value as Map<string,string[]>), metaDataState.selectedYSortOrder );
             });
             const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                return createRowHeaders(metaDataState.metaData.getDimensionSubset( metaDataState.metaData.getRemainingDimensions( [ metaDataState.selectedXDimension ] ) ) );
+                return createRowHeaders( (yAxisDimensions.value as Map<string,string[]>) );
+            } );
+
+            /**
+             * ContextInfo contains the Y-Axis dimensions that are not rendered as vertical or horizontal header,
+             * but should be rendered as text underneath each image.
+             *
+             * When we have less than 3 dimensions, this will be empty
+             */
+            const contextInfo = computed<string[]>( (): string[] => {
+                const dimensions = metaDataState.selectedYSortOrder;
+                // Remove last row order dimension - that'll be rendered as a header by ValueRow
+                dimensions.pop();
+                for( let i = 0; i < MAX_HEADERS; i++ ) {
+                    // remove headers that'll be rendered by TitleRow
+                    dimensions.pop()
+                }
+
+                return dimensions;
             } );
 
             const columnHeaders = computed<string[]>( (): string[] => {
@@ -110,7 +135,7 @@
 			const onSelectAxes = function ( axes: { xAxis: string; yAxis: string[] } ) {
 				metaDataState.selectedXDimension = axes.xAxis;
 				metaDataState.selectedYSortOrder = axes.yAxis;
-			}
+			};
 
             return {
 				dimensions,
@@ -120,6 +145,7 @@
                 grid,
                 rowHeaders,
                 columnHeaders,
+                contextInfo,
                 ...toRefs( metaDataState )
             }
         },
