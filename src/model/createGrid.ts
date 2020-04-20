@@ -4,6 +4,7 @@ function createDimensionSorter( dimensionOrder: string[] ) {
     return function( testcaseA: TestCase, testCaseB: TestCase ) {
         for( let i=0; i < dimensionOrder.length; i++ ) {
             const dimension = dimensionOrder[i];
+            // TOOD create a special comparison function for resolution
             if ( testcaseA.getDimension( dimension ) > testCaseB.getDimension( dimension ) ) {
                 return 1;
             }
