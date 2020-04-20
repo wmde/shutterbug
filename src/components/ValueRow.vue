@@ -7,11 +7,15 @@
             </div>
         </td>
 
-        <td class="row--screenshot" v-for="testcase in testcases" v-bind:key="testcase.screenshotFilename">
+        <td class="row--screenshot" v-for="testcase in testcases" v-bind:key="testcase.screenshotFilename" :class="{'invalid' : testcase.isValid}">
             <div class="row--screenshot-content">
-                <div>{{testcase.screenshotFilename}}</div>
-                <img v-if="testcase.isValid" :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
-                <span v-else>{{testcase.invalidReason}}</span>
+                <div v-if="testcase.isValid">
+                    <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
+                    <div class="row--screenshot-metadata">Resolution: 1024x768</div>
+                </div>
+                <div v-else class="row--screenshot-invalid-reason">
+                    <div class="row--screenshot-invalid-reason-text">{{testcase.invalidReason}}</div>
+                </div>
             </div>
         </td>
     </tr>
@@ -66,6 +70,7 @@
         }
 
         &--screenshot {
+            position: relative;
             padding-bottom: 60px;
 
             &:first-of-type {
@@ -80,6 +85,38 @@
                 padding: 0 ($stage-gutter/2);
                 display: block;
                 width: 100%;
+                min-height: 100px;
+            }
+
+            &-metadata {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                line-height: 30px;
+                font-weight: bold;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            &-invalid-reason {
+                position: absolute;
+                top: 0;
+                bottom: 60px;
+                left: ($stage-gutter/2);
+                right: ($stage-gutter/2);
+                background: #eee;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &-text {
+                    padding: 0 30px;
+                    text-align: center;
+                    color: #aaa;
+                }
             }
         }
     }

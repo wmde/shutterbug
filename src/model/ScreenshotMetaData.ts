@@ -36,7 +36,7 @@ export class ScreenshotMetaData {
         } );
         const results = [];
         const generatedValues = [];
-        let dimensions = dimensionsWithMoreThanOneValue;
+        const dimensions = dimensionsWithMoreThanOneValue;
         const dimensionsLength = dimensions.length;
         for ( let i = 0; i < dimensionsLength; i++ ) {
             for (let j = 0; j < dimensionsLength; j++) {
