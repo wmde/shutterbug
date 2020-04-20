@@ -15,8 +15,7 @@ const Row = Vue.extend({
         for (let i = 0; i < headerLength - 1; i++) {
             elements.push(createElement(TitleRow, {
                     props: {
-                        header: context.props.headers[i],
-                        columns: context.props.testcases.length
+                        header: context.props.headers[i]
                     }
                 })
             )

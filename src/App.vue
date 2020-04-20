@@ -30,7 +30,7 @@
 	import Stage from "@/components/Stage.vue";
     import {computed, defineComponent, reactive, ref, toRefs, watchEffect} from '@vue/composition-api';
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import {BANNER, BROWSER, OPERATING_SYSTEM, RESOLUTION} from "@/model/Dimensions";
+    import {BROWSER} from "@/model/Dimensions";
 	import SidebarToggle from "@/components/SidebarToggle.vue";
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
