@@ -39,7 +39,8 @@
     .stage {
         position: fixed;
         overflow: auto;
-        width: 100%;
+        right: 0;
+        left: 0;
         height: 100%;
 
         transition: margin-left $transition-ease;

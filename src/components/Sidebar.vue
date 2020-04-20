@@ -3,11 +3,11 @@
         <div class="sidebar--content">
 
             <fieldset>
-                <legend>X-Axis</legend>
+                <legend>Columns</legend>
                 <label>
                     <select :name="'xAxis'" v-model="xAxis">
                         <option value="" disabled>Select X-Axis</option>
-                        <option v-for="(value, index) in xAxisOptions()" :key="index" :value="value">
+                        <option v-for="(value, index) in xAxisOptions" :key="index" :value="value">
                             {{ value }}
                         </option>
                     </select>
@@ -15,99 +15,61 @@
             </fieldset>
 
             <fieldset v-show="xAxis">
-                <legend>Y-Axis</legend>
+                <legend>Row Sort</legend>
                 <label>
-                    <select :name="'yAxisPrimary'" v-model="yAxisPrimary">
-                        <option value="" disabled>Select Primary Y-Axis</option>
-                        <option v-for="(value, index) in yAxisPrimaryOptions()" :key="index" :value="value">
-                            {{ value }}
-                        </option>
-                    </select>
-                </label>
-                <label v-show="yAxisPrimary">
-                    <select :name="'yAxisSecondary'" v-model="yAxisSecondary">
-                        <option value="" disabled>Select Secondary Y-Axis</option>
-                        <option v-for="(value, index) in yAxisSecondaryOptions()" :key="index" :value="value">
-                            {{ value }}
+                    <select :name="'yAxisPrimary'" v-model="yAxis">
+                        <option value="" disabled>Select Y-Axis</option>
+                        <option v-for="(value, index) in sortValues" :key="index" :value="index">
+                            {{ value.join(' > ') }}
                         </option>
                     </select>
                 </label>
             </fieldset>
 
             <button class="sidebar--button" v-on:click="onSubmit">
-                View
+                Sort
             </button>
         </div>
     </form>
 </template>
 
 <script>
+	import {computed, ref} from '@vue/composition-api';
 
 	export default {
 		name: "Sidebar",
-		props: [ 'sidebarIsVisible', 'selectedAxes', 'dimensions' ],
-		data: function() {
-			return {
-				selected: {
-					xAxis: '',
-					yAxisPrimary: '',
-					yAxisSecondary: '',
+		props: [ 'sidebarIsVisible', 'dimensions', 'metadata' ],
+		setup( props, { emit } ) {
+			const xAxis = ref('');
+			const yAxis = ref(0);
+
+			const sortValues = computed(() => {
+				if( props.metadata === null ) {
+					return [];
 				}
-			}
-		},
-		computed: {
-			xAxis: {
-				get() {
-					return this.selected.xAxis;
-				},
-				set( value ) {
-					this.selected.xAxis = value;
-					this.selected.yAxisPrimary = '';
-					this.selected.yAxisSecondary = '';
-				}
-			},
-			yAxisPrimary: {
-				get() {
-					return this.selected.yAxisPrimary;
-				},
-				set( value ) {
-					this.selected.yAxisPrimary = value;
-					this.selected.yAxisSecondary = '';
-				}
-			},
-			yAxisSecondary: {
-				get() {
-					return this.selected.yAxisSecondary;
-				},
-				set( value ) {
-					this.selected.yAxisSecondary = value;
-				}
-			}
-		},
-		methods: {
-			xAxisOptions: function() {
-				return Array.from( this.dimensions.keys() );
-			},
-			yAxisPrimaryOptions: function() {
-				const options = this.xAxisOptions();
-				const index = options.indexOf( this.selected.xAxis );
-				if( index > -1 ) {
-					options.splice( index, 1 );
-				}
-				return options;
-			},
-			yAxisSecondaryOptions: function() {
-				const options = this.yAxisPrimaryOptions();
-				const index = options.indexOf( this.selected.yAxisPrimary );
-				if( index > -1 ) {
-					options.splice( index, 1 );
-				}
-				return options;
-			},
-            onSubmit : function( e ) {
+				return props.metadata.getSortDimensionsNames( xAxis.value );
+			});
+
+			const xAxisOptions = computed(() => {
+				return Array.from( props.dimensions.keys() );
+			});
+
+			const onSubmit = e => {
 				e.preventDefault();
-				this.$emit('select-axes', this.selected);
-            }
+
+				emit( 'select-axes', {
+					xAxis: xAxis.value,
+					yAxis: sortValues.value[yAxis.value]
+				});
+			}
+
+            return {
+				xAxis,
+                yAxis,
+				sortValues,
+				xAxisOptions,
+				onSubmit
+            };
 		}
 	}
 </script>

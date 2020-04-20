@@ -9,8 +9,8 @@
 
         <sidebar
                 v-bind:sidebar-is-visible="sidebarIsVisible"
-                v-bind:selected-axes="selectedAxes"
                 v-bind:dimensions="dimensions"
+                v-bind:metadata="metaData"
                 v-on:select-axes="onSelectAxes"
         ></sidebar>
 
@@ -56,16 +56,6 @@
             const onToggleSidebar = function () {
                 sidebarIsVisible.value = !sidebarIsVisible.value;
             };
-
-            const selectedAxes = ref({
-                xAxis : OPERATING_SYSTEM,
-                yAxis : [ BROWSER, RESOLUTION ]
-            });
-
-			const onSelectAxes = function ( axes: object ) {
-				sidebarIsVisible.value = false;
-                console.log( axes );
-			}
 
             const metaDataInit: MetadataState = {
                 isLoading: true,
@@ -117,13 +107,15 @@
 				return metaDataState.metaData.dimensions;
             });
 
-            // TODO create computed property of column header labels, based on metaDataState.selectedDimensions
+			const onSelectAxes = function ( axes: { xAxis: string; yAxis: string[] } ) {
+				metaDataState.selectedXDimension = axes.xAxis;
+				metaDataState.selectedYSortOrder = axes.yAxis;
+			}
 
             return {
 				dimensions,
                 sidebarIsVisible,
                 onToggleSidebar,
-				selectedAxes,
 				onSelectAxes,
                 grid,
                 rowHeaders,
