@@ -103,5 +103,37 @@ describe('ScreenshotMetaData', () => {
         const remaining = metaData.getRemainingDimensions( [ BANNER, BROWSER ] );
 
         expect( remaining ).toStrictEqual( [ OPERATING_SYSTEM, RESOLUTION] );
+    } );
+
+
+    describe( 'getSortDimensionsNames combines all dimensions', () => {
+        it( 'combines all dimensions', () => {
+            const metaData = ScreenshotMetaData.fromObject( rawData );
+
+            const dimensionCombinations = metaData.getSortDimensionsNames( BANNER );
+
+            expect( dimensionCombinations.sort() ).toStrictEqual([
+                [ OPERATING_SYSTEM, RESOLUTION, BROWSER ],
+                [ RESOLUTION, OPERATING_SYSTEM, BROWSER ],
+                [ RESOLUTION, BROWSER, OPERATING_SYSTEM ],
+                [ OPERATING_SYSTEM, BROWSER, RESOLUTION ],
+                [ BROWSER, RESOLUTION, OPERATING_SYSTEM ],
+                [ BROWSER, OPERATING_SYSTEM, RESOLUTION ],
+            ].sort())
+        })
+
+
+        it('drops dimensions with 1 value', () => {
+            // BANNER in example data has only 1 value, so that is dropped
+            const metaData = ScreenshotMetaData.fromObject( rawData );
+
+            const dimensionCombinations = metaData.getSortDimensionsNames( BROWSER );
+
+            expect( dimensionCombinations ).toStrictEqual([
+                [ OPERATING_SYSTEM, RESOLUTION ],
+                [ RESOLUTION, OPERATING_SYSTEM ]
+            ])
+        } )
     })
+
 });
