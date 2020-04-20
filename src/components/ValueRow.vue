@@ -1,13 +1,16 @@
 <template>
-    <tr class="row">
+    <section class="row">
 
-        <td class="row--label">
-            <div class="row--label-content">
-                <span class="row--label-text">{{ header.label }}</span>
-            </div>
-        </td>
+        <div class="row--label">
+            <span class="row--label-text">{{ header.label }}</span>
+        </div>
 
-        <td class="row--screenshot" v-for="testcase in testcases" v-bind:key="testcase.screenshotFilename" :class="{'invalid' : testcase.isValid}">
+        <div class="row--screenshot"
+             v-for="testcase in testcases"
+             v-bind:key="testcase.screenshotFilename"
+             :class="{'invalid' : testcase.isValid}"
+             :style="{width: `${100/testcases.length}%`}"
+        >
             <div class="row--screenshot-content">
                 <div v-if="testcase.isValid">
                     <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
@@ -17,8 +20,9 @@
                     <div class="row--screenshot-invalid-reason-text">{{testcase.invalidReason}}</div>
                 </div>
             </div>
-        </td>
-    </tr>
+        </div>
+
+    </section>
 </template>
 
 <script>
@@ -37,20 +41,21 @@
     @import "src/assets/settings";
 
     .row {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
         padding-bottom: $row-padding;
+        padding-left: $axis-size;
 
         &--label {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             background: $axis-background-color;
-
-            &-content {
-                position: absolute;
-                width: $axis-size;
-                height: 100%;
-                color: $axis-color;
-                padding-bottom: $row-padding;
-                top: 0;
-            }
+            width: $axis-size;
+            height: 100%;
+            color: $axis-color;
+            padding-bottom: $row-padding;
 
             &-text {
                 position: absolute;
@@ -71,7 +76,7 @@
 
         &--screenshot {
             position: relative;
-            padding-bottom: 60px;
+            display: flex;
 
             &:first-of-type {
                 padding-left: $stage-gutter/2;
@@ -90,10 +95,10 @@
 
             &-metadata {
                 position: absolute;
-                bottom: 0;
+                bottom: -30px;
                 left: 0;
                 right: 0;
-                height: 60px;
+                height: 30px;
                 line-height: 30px;
                 font-weight: bold;
                 font-size: 12px;
@@ -103,10 +108,11 @@
             &-invalid-reason {
                 position: absolute;
                 top: 0;
-                bottom: 60px;
+                height: 100%;
                 left: ($stage-gutter/2);
                 right: ($stage-gutter/2);
                 background: #eee;
+                font-size: 12px;
 
                 display: flex;
                 align-items: center;
