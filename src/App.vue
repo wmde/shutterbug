@@ -3,7 +3,7 @@
         <Header></Header>
         <SidebarToggle v-bind:sidebar-is-visible="sidebarIsVisible" v-on:toggle-sidebar="onToggleSidebar"></SidebarToggle>
         <sidebar v-bind:sidebar-is-visible="sidebarIsVisible"></sidebar>
-        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid" v-bind:rowHeaders="rowHeaders"></stage>
+        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid" v-bind:row-headers="rowHeaders" v-bind:column-headers="columnHeaders"></stage>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
 	import Stage from "@/components/Stage.vue";
     import {computed, defineComponent, reactive, ref, toRefs, watchEffect} from '@vue/composition-api';
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import {BROWSER, RESOLUTION} from "@/model/Dimensions";
+    import {BANNER, BROWSER, OPERATING_SYSTEM, RESOLUTION} from "@/model/Dimensions";
     import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
 	import SidebarToggle from "@/components/SidebarToggle.vue";
     import {createGrid} from "@/model/createGrid";
@@ -23,7 +23,8 @@
     interface MetadataState {
         isLoading: boolean;
         metaData: ScreenshotMetaData | null;
-        selectedDimensions: string[];
+        selectedXDimension: string;
+        selectedYSortOrder: string[];
     }
 
     export default defineComponent( {
@@ -45,7 +46,8 @@
             const metaDataInit: MetadataState = {
                 isLoading: true,
                 metaData: null,
-                selectedDimensions: [ BROWSER, RESOLUTION ]
+                selectedXDimension: BROWSER,
+                selectedYSortOrder: []
 
             };
             const metaDataState = reactive( metaDataInit );
@@ -53,7 +55,9 @@
                 fetch( 'screenshots/metadata.json' )
                 .then( response => response.json() )
                 .then( metaDataObj =>  {
-                    metaDataState.metaData = ScreenshotMetaData.fromObject( metaDataObj );
+                    const metadata = ScreenshotMetaData.fromObject( metaDataObj );
+                    metaDataState.metaData = metadata;
+                    metaDataState.selectedYSortOrder = metadata.getRemainingDimensions( [metaDataState.selectedXDimension ] );
                     metaDataState.isLoading = false;
                 })
                 .catch( e => {
@@ -64,21 +68,24 @@
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                const selectedRows = metaDataState.metaData.getDimensionSubset( metaDataState.selectedDimensions );
 
-                // TODO expose UI for ordering or selection, for now we just take them as-is
-                const orderRows = metaDataState.metaData.getRemainingDimensions( metaDataState.selectedDimensions );
+                const selectedRows = metaDataState.metaData.getDimensionSubset( metaDataState.metaData.getRemainingDimensions( [ metaDataState.selectedXDimension ] ) );
 
-                return createGrid( metaDataState.metaData.testCases, selectedRows, orderRows);
+                return createGrid( metaDataState.metaData.testCases, selectedRows, metaDataState.selectedYSortOrder );
             });
             const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                return createRowHeaders(metaDataState.metaData.getDimensionSubset( metaDataState.selectedDimensions ) );
+                return createRowHeaders(metaDataState.metaData.getDimensionSubset( metaDataState.metaData.getRemainingDimensions( [ metaDataState.selectedXDimension ] ) ) );
             } );
 
-            // TODO create computed property of column header labels, based on metaDataState.selectedDimensions
+            const columnHeaders = computed<string[]>( (): string[] => {
+                if( metaDataState.metaData === null) {
+                    return [];
+                }
+                return metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension ) || [];
+            } );
 
             return {
 				metaData,
@@ -86,6 +93,7 @@
                 onToggleSidebar,
                 grid,
                 rowHeaders,
+                columnHeaders,
                 ...toRefs( metaDataState )
             }
         },
