@@ -1,9 +1,26 @@
 <template>
     <div id="app">
         <Header></Header>
-        <SidebarToggle v-bind:sidebar-is-visible="sidebarIsVisible" v-on:toggle-sidebar="onToggleSidebar"></SidebarToggle>
-        <sidebar v-bind:sidebar-is-visible="sidebarIsVisible"></sidebar>
-        <stage v-bind:sidebar-is-visible="sidebarIsVisible" v-bind:grid="grid" v-bind:row-headers="rowHeaders" v-bind:column-headers="columnHeaders"></stage>
+
+        <SidebarToggle
+                v-bind:sidebar-is-visible="sidebarIsVisible"
+                v-on:toggle-sidebar="onToggleSidebar"
+        ></SidebarToggle>
+
+        <sidebar
+                v-bind:sidebar-is-visible="sidebarIsVisible"
+                v-bind:dimensions="dimensions"
+                v-bind:metadata="metaData"
+                v-on:select-axes="onSelectAxes"
+        ></sidebar>
+
+        <stage
+                v-bind:sidebar-is-visible="sidebarIsVisible"
+                v-bind:grid="grid"
+                v-bind:row-headers="rowHeaders"
+                v-bind:column-headers="columnHeaders"
+        ></stage>
+
     </div>
 </template>
 
@@ -14,7 +31,6 @@
     import {computed, defineComponent, reactive, ref, toRefs, watchEffect} from '@vue/composition-api';
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
     import {BANNER, BROWSER, OPERATING_SYSTEM, RESOLUTION} from "@/model/Dimensions";
-    import MetaData from './../../banner-screenshots/banner-shots/00-ba-200416/metadata.json';
 	import SidebarToggle from "@/components/SidebarToggle.vue";
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
@@ -36,12 +52,10 @@
 			Sidebar
 		},
         setup() {
-			const metaData = MetaData;
             const sidebarIsVisible = ref(false);
             const onToggleSidebar = function () {
                 sidebarIsVisible.value = !sidebarIsVisible.value;
             };
-
 
             const metaDataInit: MetadataState = {
                 isLoading: true,
@@ -86,11 +100,23 @@
                 }
                 return metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension ) || [];
             } );
+            const dimensions = computed( () => {
+				if( metaDataState.metaData === null) {
+					return new Map();
+				}
+				return metaDataState.metaData.dimensions;
+            });
+
+			const onSelectAxes = function ( axes: { xAxis: string; yAxis: string[] } ) {
+				metaDataState.selectedXDimension = axes.xAxis;
+				metaDataState.selectedYSortOrder = axes.yAxis;
+			}
 
             return {
-				metaData,
+				dimensions,
                 sidebarIsVisible,
                 onToggleSidebar,
+				onSelectAxes,
                 grid,
                 rowHeaders,
                 columnHeaders,
