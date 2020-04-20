@@ -3,7 +3,7 @@
         <div class="stage--content">
             <table class="stage--table">
                 <thead>
-                    <XAxisRow></XAxisRow>
+                    <XAxisRow :headers="columnHeaders"></XAxisRow>
                 </thead>
                 <tbody>
                     <row v-for="( testcases, index) in grid"
@@ -27,7 +27,8 @@
 		props : {
 			sidebarIsVisible: Boolean,
 			grid: Array,
-            rowHeaders: Array
+            rowHeaders: Array,
+            columnHeaders: Array
 		}
 	}
 </script>

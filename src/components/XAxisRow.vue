@@ -1,15 +1,17 @@
 <template>
     <tr class="x-axis-row">
         <th></th>
-        <th>CTRL</th>
-        <th>VAR</th>
+        <th v-for="header in headers" :key="header">{{header}}</th>
     </tr>
 </template>
 
 <script>
 
 	export default {
-		name: "XAxisRow"
+		name: "XAxisRow",
+        props: {
+			headers: Array
+        }
 	}
 </script>
 
