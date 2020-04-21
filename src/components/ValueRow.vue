@@ -11,13 +11,13 @@
              :class="{'invalid' : testcase.isValid}"
              :style="{width: `${100/testcases.length}%`}"
         >
-            <a href="" class="row--screenshot-content" v-on:click="onClick( rowIndex, columnIndex, $event )">
+            <a href="" class="row--screenshot-content" v-on:click.prevent ="$emit( 'open-slideshow', { rowIndex, columnIndex } )">
                 <div v-if="testcase.isValid">
                     <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
-                    <div v-for="dimensionName in contextInfo"
+                    <div v-for="dimensionName in additionalHeaderInfo"
                          :key="dimensionName"
                          class="row--screenshot-metadata">
-                            {{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}
+                        {{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}
                     </div>
                 </div>
                 <div v-else class="row--screenshot-invalid-reason">
@@ -29,31 +29,30 @@
     </section>
 </template>
 
-<script>
+<script lang="ts">
 	import {RowHeader} from "@/model/RowHeader";
+	import {computed, defineComponent} from "@vue/composition-api";
 
-	export default {
+	export default defineComponent( {
 		name: "ValueRow",
         props: {
 			testcases: Array,
 			header: RowHeader,
             rowIndex: Number,
-			contextInfo: {
-				type: Array,
-				default: () => []
-			}
+            selectedYSortOrder: {
+                type: Array,
+                default: () => []
+            },
 		},
-        methods: {
-			onClick : function ( rowIndex, columnIndex, e) {
-				e.preventDefault();
-
-				this.$emit( 'open-slideshow', {
-					rowIndex : rowIndex,
-                    columnIndex : columnIndex
-                });
+        setup( props ) {
+            const additionalHeaderInfo = computed( () => {
+                return props.selectedYSortOrder.slice( 2 );
+            } );
+            return {
+                additionalHeaderInfo
             }
         }
-	}
+	} );
 </script>
 
 <style lang="scss">

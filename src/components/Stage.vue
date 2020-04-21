@@ -7,7 +7,7 @@
                  :key="index"
                  :rowIndex="index"
                  :headers="rowHeaders[index]"
-                 :context-info="contextInfo"
+                 :selected-y-sort-order="selectedYSortOrder"
                  v-on:open-slideshow="( slideshowPosition ) => $emit( 'open-slideshow', slideshowPosition )"
             />
         </div>
@@ -26,7 +26,7 @@
 			grid: Array,
             rowHeaders: Array,
             columnHeaders: Array,
-            contextInfo: Array,
+			selectedYSortOrder: Array,
 		}
 	}
 </script>

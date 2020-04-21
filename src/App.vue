@@ -20,8 +20,8 @@
                 v-bind:grid="grid"
                 v-bind:row-headers="rowHeaders"
                 v-bind:column-headers="columnHeaders"
+                v-bind:selected-y-sort-order="selectedYSortOrder"
                 v-on:open-slideshow="onOpenSlideshow"
-                v-bind:context-info="contextInfo"
         ></stage>
 
         <slideshow
@@ -49,7 +49,6 @@
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
     import {RowHeader} from "@/model/RowHeader";
-    import {MAX_HEADERS} from "@/components/Row";
     import SlideshowPosition from "@/model/slideshowPosition";
 
     interface MetadataState {
@@ -117,24 +116,6 @@
                 const orderedDimensionMap = new Map<string,string[]>();
                 metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get(dimension )  || [] ) );
                 return createRowHeaders( orderedDimensionMap );
-            } );
-
-            /**
-             * ContextInfo contains the Y-Axis dimensions that are not rendered as vertical or horizontal header,
-             * but should be rendered as text underneath each image.
-             *
-             * When we have less than 3 dimensions, this will be empty
-             */
-            const contextInfo = computed<string[]>( (): string[] => {
-                const dimensions = Array.from( metaDataState.selectedYSortOrder );
-                // Remove last row order dimension - that'll be rendered as a header by ValueRow
-                dimensions.pop();
-                for( let i = 0; i < MAX_HEADERS; i++ ) {
-                    // remove headers that'll be rendered by TitleRow
-                    dimensions.pop()
-                }
-
-                return dimensions;
             } );
 
             const columnHeaders = computed<string[]>( (): string[] => {
@@ -253,7 +234,6 @@
                 grid,
                 rowHeaders,
                 columnHeaders,
-                contextInfo,
                 ...toRefs( metaDataState ),
                 preferredOrderOfDimensions: ref( preferredOrderOfDimensions )
             }
