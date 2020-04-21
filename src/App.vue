@@ -29,6 +29,7 @@
                 v-bind:slideshow-position="slideshowPosition"
                 v-on:close-slideshow="onCloseSlideshow"
                 v-on:navigate-by="onNavigateBy"
+                v-bind:dimensions="dimensions"
         ></slideshow>
 
     </div>

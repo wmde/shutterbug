@@ -14,7 +14,11 @@
             <a href="" class="row--screenshot-content" v-on:click="onClick( rowIndex, columnIndex, $event )">
                 <div v-if="testcase.isValid">
                     <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
-                    <div v-for="dimensionName in contextInfo" :key="dimensionName" class="row--screenshot-metadata">{{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}</div>
+                    <div v-for="dimensionName in contextInfo"
+                         :key="dimensionName"
+                         class="row--screenshot-metadata">
+                            {{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}
+                    </div>
                 </div>
                 <div v-else class="row--screenshot-invalid-reason">
                     <div class="row--screenshot-invalid-reason-text">{{testcase.invalidReason}}</div>

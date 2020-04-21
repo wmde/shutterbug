@@ -8,6 +8,12 @@
             <span v-else>
                 {{currentTestcase.invalidReason}}
             </span>
+            <span class="slideshow--testcase-metadata">
+                <span v-for="dimensionName in dimensions.keys()"
+                        :key="dimensionName">
+                            {{ currentTestcase.dimensions.get( dimensionName ) || '' }}
+                </span>
+            </span>
         </div>
         <a href="" v-if="canNavigateLeft" v-on:click.prevent="$emit('navigate-by', -1, 0)" class="slideshow--controls-left">
             <Icon :icon="'left'" class="slideshow--controls-left-icon"></Icon>
@@ -36,7 +42,8 @@
 		props: {
 			slideshowIsVisible: Boolean,
 			slideshowPosition: SlideshowPosition,
-			grid: Array
+			grid: Array,
+            dimensions: Map,
 		},
 		setup( props ) {
 			const currentTestcase = computed( () => {
