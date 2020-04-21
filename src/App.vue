@@ -50,6 +50,7 @@
     import {createRowHeaders} from "@/model/createRowHeaders";
     import {RowHeader} from "@/model/RowHeader";
     import SlideshowPosition from "@/model/slideshowPosition";
+    import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
     interface MetadataState {
         isLoading: boolean;
@@ -85,11 +86,13 @@
                 .then( response => response.json() )
                 .then( metaDataObj =>  {
                     const metadata = ScreenshotMetaData.fromObject( metaDataObj );
+                    const hasDimension = ( dimension: string ) => metadata.dimensions.has( dimension );
                     // select default X dimension in order of preference
-                    const selectedXDimension = preferredOrderOfDimensions.find( dimensions => metadata.dimensions.has( dimensions ) ) || '';
+                    const selectedXDimension = preferredOrderOfDimensions.find( hasDimension ) || '';
+                    const orderedYDimensions = preferredOrderOfDimensions.filter( dimension => hasDimension( dimension ) && dimension !== selectedXDimension );
                     metaDataState.metaData = metadata;
                     metaDataState.selectedXDimension = selectedXDimension;
-                    metaDataState.selectedYSortOrder = metadata.getRemainingDimensions( [ selectedXDimension ] );
+                    metaDataState.selectedYSortOrder = createDimensionCombinations( orderedYDimensions )[0];
                     metaDataState.isLoading = false;
                 })
                 .catch( e => {
@@ -114,7 +117,7 @@
                     return [];
                 }
                 const orderedDimensionMap = new Map<string,string[]>();
-                metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get(dimension )  || [] ) );
+                metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get( dimension ) || [] ) );
                 return createRowHeaders( orderedDimensionMap );
             } );
 

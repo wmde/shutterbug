@@ -18,7 +18,7 @@
                 <legend>Row Sort</legend>
                 <label>
                     <select :name="'yAxisPrimary'" v-model="yAxis">
-                        <option value="" disabled>Select Y-Axis</option>
+                        <option value="-1" disabled>Select Y-Axis</option>
                         <option v-for="(value, index) in sortValues" :key="index" :value="index">
                             {{ value.join(' > ') }}
                         </option>
@@ -50,7 +50,7 @@
         },
 		setup( props, { emit } ) {
 			const xAxis = ref('');
-			const yAxis = ref(0);
+			const yAxis = ref(-1);
 
 			const xAxisOptions = computed(() => {
 				return props.preferredOrderOfDimensions.reduce( ( options, dimension ) => {
@@ -64,8 +64,10 @@
 				defaultDimension => {
 					if ( xAxis.value === '' && defaultDimension !== '' ) {
 						xAxis.value = defaultDimension;
+						yAxis.value = 0;
                     }
-				});
+				}
+			);
 
 			const sortValues = computed( () => {
 				if( props.dimensions.size === 0 || !xAxis.value ) {
