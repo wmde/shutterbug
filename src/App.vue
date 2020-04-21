@@ -10,7 +10,8 @@
         <sidebar
                 v-bind:sidebar-is-visible="sidebarIsVisible"
                 v-bind:dimensions="dimensions"
-                v-bind:metadata="metaData"
+                v-bind:default-dimension="selectedXDimension"
+                v-bind:preferred-order-of-dimensions="preferredOrderOfDimensions"
                 v-on:select-axes="onSelectAxes"
         ></sidebar>
 
@@ -44,7 +45,7 @@
 	import Slideshow from "@/components/Slideshow.vue";
 
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import {BROWSER} from "@/model/Dimensions";
+    import {BANNER, BROWSER, DEVICE, OPERATING_SYSTEM, ORIENTATION, RESOLUTION} from "@/model/Dimensions";
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
     import {RowHeader} from "@/model/RowHeader";
@@ -68,17 +69,14 @@
 			Sidebar
 		},
         setup() {
-            const sidebarIsVisible = ref(false);
-            const onToggleSidebar = function () {
-                sidebarIsVisible.value = !sidebarIsVisible.value;
-            };
 
-
-
+            // TODO Talk to others to come up with the best order
+            // TODO switch BROWSER and BANNER when we have A/B test cases in the example/live data
+            const preferredOrderOfDimensions = [ BROWSER, BANNER, DEVICE, RESOLUTION, OPERATING_SYSTEM, ORIENTATION ];
             const metaDataInit: MetadataState = {
                 isLoading: true,
                 metaData: null,
-                selectedXDimension: BROWSER,
+                selectedXDimension: '',
                 selectedYSortOrder: []
 
             };
@@ -88,8 +86,11 @@
                 .then( response => response.json() )
                 .then( metaDataObj =>  {
                     const metadata = ScreenshotMetaData.fromObject( metaDataObj );
+                    // select default X dimension in order of preference
+                    const selectedXDimension = preferredOrderOfDimensions.find( dimensions => metadata.dimensions.has( dimensions ) ) || '';
                     metaDataState.metaData = metadata;
-                    metaDataState.selectedYSortOrder = metadata.getRemainingDimensions( [metaDataState.selectedXDimension ] );
+                    metaDataState.selectedXDimension = selectedXDimension;
+                    metaDataState.selectedYSortOrder = metadata.getRemainingDimensions( [ selectedXDimension ] );
                     metaDataState.isLoading = false;
                 })
                 .catch( e => {
@@ -107,14 +108,15 @@
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-
                 return createGrid( metaDataState.metaData.testCases, (yAxisDimensions.value as Map<string,string[]>), metaDataState.selectedYSortOrder );
             });
             const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                return createRowHeaders( (yAxisDimensions.value as Map<string,string[]>) );
+                const orderedDimensionMap = new Map<string,string[]>();
+                metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get(dimension )  || [] ) );
+                return createRowHeaders( orderedDimensionMap );
             } );
 
             /**
@@ -124,7 +126,7 @@
              * When we have less than 3 dimensions, this will be empty
              */
             const contextInfo = computed<string[]>( (): string[] => {
-                const dimensions = metaDataState.selectedYSortOrder;
+                const dimensions = Array.from( metaDataState.selectedYSortOrder );
                 // Remove last row order dimension - that'll be rendered as a header by ValueRow
                 dimensions.pop();
                 for( let i = 0; i < MAX_HEADERS; i++ ) {
@@ -141,7 +143,17 @@
                 }
                 return metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension ) || [];
             } );
-            const dimensions = computed( () => {
+
+            // ----------
+            // Sidebar state
+            // ---------
+
+            const sidebarIsVisible = ref(false);
+            const onToggleSidebar = function () {
+                sidebarIsVisible.value = !sidebarIsVisible.value;
+            };
+
+            const dimensions = computed<Map<string, string[]>>( () => {
 				if( metaDataState.metaData === null) {
 					return new Map();
 				}
@@ -242,7 +254,8 @@
                 rowHeaders,
                 columnHeaders,
                 contextInfo,
-                ...toRefs( metaDataState )
+                ...toRefs( metaDataState ),
+                preferredOrderOfDimensions: ref( preferredOrderOfDimensions )
             }
         },
 	} );
