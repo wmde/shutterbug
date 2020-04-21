@@ -30,13 +30,9 @@ export class ScreenshotMetaData {
      * @param dimensionName
      */
     getSortDimensionsNames( dimensionName: string ): string[][] {
-        const dimensionsWithMoreThanOneValue = [...this.dimensions.keys()].filter( dimensionNameCandidate => {
-            return dimensionName !== dimensionNameCandidate &&
-                (this.dimensions.get(dimensionNameCandidate) || []).length > 1
-        } );
         const results = [];
         const generatedValues = [];
-        const dimensions = dimensionsWithMoreThanOneValue;
+        const dimensions = this.getRemainingDimensions( [ dimensionName ] );
         const dimensionsLength = dimensions.length;
         for ( let i = 0; i < dimensionsLength; i++ ) {
             for (let j = 0; j < dimensionsLength; j++) {

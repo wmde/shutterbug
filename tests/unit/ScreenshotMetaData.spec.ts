@@ -120,20 +120,8 @@ describe('ScreenshotMetaData', () => {
                 [ BROWSER, RESOLUTION, OPERATING_SYSTEM ],
                 [ BROWSER, OPERATING_SYSTEM, RESOLUTION ],
             ].sort())
-        })
+        } );
 
-
-        it('drops dimensions with 1 value', () => {
-            // BANNER in example data has only 1 value, so that is dropped
-            const metaData = ScreenshotMetaData.fromObject( rawData );
-
-            const dimensionCombinations = metaData.getSortDimensionsNames( BROWSER );
-
-            expect( dimensionCombinations ).toStrictEqual([
-                [ OPERATING_SYSTEM, RESOLUTION ],
-                [ RESOLUTION, OPERATING_SYSTEM ]
-            ])
-        } )
-    })
+    } );
 
 });
