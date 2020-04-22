@@ -5,8 +5,10 @@
             <row v-for="( testcases, index) in grid"
                  :testcases="testcases"
                  :key="index"
+                 :rowIndex="index"
                  :headers="rowHeaders[index]"
                  :context-info="contextInfo"
+                 v-on:open-slideshow="( slideshowPosition ) => $emit( 'open-slideshow', slideshowPosition )"
             />
         </div>
     </div>

@@ -6,20 +6,24 @@
         </div>
 
         <div class="row--screenshot"
-             v-for="testcase in testcases"
+             v-for="(testcase, columnIndex) in testcases"
              v-bind:key="testcase.screenshotFilename"
              :class="{'invalid' : testcase.isValid}"
              :style="{width: `${100/testcases.length}%`}"
         >
-            <div class="row--screenshot-content">
+            <a href="" class="row--screenshot-content" v-on:click="onClick( rowIndex, columnIndex, $event )">
                 <div v-if="testcase.isValid">
                     <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
-                    <div v-for="dimensionName in contextInfo" :key="dimensionName" class="row--screenshot-metadata">{{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}</div>
+                    <div v-for="dimensionName in contextInfo"
+                         :key="dimensionName"
+                         class="row--screenshot-metadata">
+                            {{dimensionName}}: {{testcase.dimensions.get( dimensionName )}}
+                    </div>
                 </div>
                 <div v-else class="row--screenshot-invalid-reason">
                     <div class="row--screenshot-invalid-reason-text">{{testcase.invalidReason}}</div>
                 </div>
-            </div>
+            </a>
         </div>
 
     </section>
@@ -33,11 +37,22 @@
         props: {
 			testcases: Array,
 			header: RowHeader,
-            contextInfo: {
+            rowIndex: Number,
+			contextInfo: {
 				type: Array,
-                default: () => []
+				default: () => []
+			}
+		},
+        methods: {
+			onClick : function ( rowIndex, columnIndex, e) {
+				e.preventDefault();
+
+				this.$emit( 'open-slideshow', {
+					rowIndex : rowIndex,
+                    columnIndex : columnIndex
+                });
             }
-		}
+        }
 	}
 </script>
 
@@ -95,6 +110,9 @@
                 display: block;
                 width: 100%;
                 min-height: 100px;
+                color: $font-color-dark;
+                text-decoration: none;
+                text-align: center;
             }
 
             &-metadata {
