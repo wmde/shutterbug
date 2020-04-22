@@ -5,7 +5,7 @@ function multiplyLengths( arr: Array<string[]> ) {
     return arr.reduce( (multipliedLength, values ) => multipliedLength * values.length, 1 );
 }
 
-export function createRowHeaders( dimensions: DimensionMap): RowHeader[][] {
+export function createRowHeaders( dimensions: DimensionMap ): RowHeader[][] {
     const dimensionValueArray = [...dimensions.values()];
 
     // Number of rows is the length of all dimension value array multiplied
@@ -20,8 +20,6 @@ export function createRowHeaders( dimensions: DimensionMap): RowHeader[][] {
     const headers: RowHeader[][] = Array(rowCount);
     let depth = 0;
     for( const [dimensionName, dimensionValues] of dimensions.entries() ) {
-        // Grid is sorted alphabetically, headers need to be sorted the same way
-        dimensionValues.sort(); // TOOD create a special comparison function for resolution
         const step = spanSizes[depth];
         // Distribute the dimension values in steps according to their span size
         for( let rowIndex=0; rowIndex < rowCount; rowIndex += step ) {

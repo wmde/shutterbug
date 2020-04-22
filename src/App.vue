@@ -10,7 +10,8 @@
         <sidebar
                 v-bind:sidebar-is-visible="sidebarIsVisible"
                 v-bind:dimensions="dimensions"
-                v-bind:metadata="metaData"
+                v-bind:default-dimension="selectedXDimension"
+                v-bind:preferred-order-of-dimensions="preferredOrderOfDimensions"
                 v-on:select-axes="onSelectAxes"
         ></sidebar>
 
@@ -19,8 +20,8 @@
                 v-bind:grid="grid"
                 v-bind:row-headers="rowHeaders"
                 v-bind:column-headers="columnHeaders"
+                v-bind:selected-y-sort-order="selectedYSortOrder"
                 v-on:open-slideshow="onOpenSlideshow"
-                v-bind:context-info="contextInfo"
         ></stage>
 
         <slideshow
@@ -44,12 +45,12 @@
 	import Slideshow from "@/components/Slideshow.vue";
 
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import {BROWSER} from "@/model/Dimensions";
+    import {BANNER, BROWSER, DEVICE, OPERATING_SYSTEM, ORIENTATION, RESOLUTION} from "@/model/Dimensions";
     import {createGrid} from "@/model/createGrid";
     import {createRowHeaders} from "@/model/createRowHeaders";
     import {RowHeader} from "@/model/RowHeader";
-    import {MAX_HEADERS} from "@/components/Row";
     import SlideshowPosition from "@/model/slideshowPosition";
+    import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
     interface MetadataState {
         isLoading: boolean;
@@ -68,17 +69,14 @@
 			Sidebar
 		},
         setup() {
-            const sidebarIsVisible = ref(false);
-            const onToggleSidebar = function () {
-                sidebarIsVisible.value = !sidebarIsVisible.value;
-            };
 
-
-
+            // TODO Talk to others to come up with the best order
+            // TODO switch BROWSER and BANNER when we have A/B test cases in the example/live data
+            const preferredOrderOfDimensions = [ BROWSER, BANNER, DEVICE, RESOLUTION, OPERATING_SYSTEM, ORIENTATION ];
             const metaDataInit: MetadataState = {
                 isLoading: true,
                 metaData: null,
-                selectedXDimension: BROWSER,
+                selectedXDimension: '',
                 selectedYSortOrder: []
 
             };
@@ -88,8 +86,13 @@
                 .then( response => response.json() )
                 .then( metaDataObj =>  {
                     const metadata = ScreenshotMetaData.fromObject( metaDataObj );
+                    const hasDimension = ( dimension: string ) => metadata.dimensions.has( dimension );
+                    // select default X dimension in order of preference
+                    const selectedXDimension = preferredOrderOfDimensions.find( hasDimension ) || '';
+                    const orderedYDimensions = preferredOrderOfDimensions.filter( dimension => hasDimension( dimension ) && dimension !== selectedXDimension );
                     metaDataState.metaData = metadata;
-                    metaDataState.selectedYSortOrder = metadata.getRemainingDimensions( [metaDataState.selectedXDimension ] );
+                    metaDataState.selectedXDimension = selectedXDimension;
+                    metaDataState.selectedYSortOrder = createDimensionCombinations( orderedYDimensions )[0];
                     metaDataState.isLoading = false;
                 })
                 .catch( e => {
@@ -107,32 +110,15 @@
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-
                 return createGrid( metaDataState.metaData.testCases, (yAxisDimensions.value as Map<string,string[]>), metaDataState.selectedYSortOrder );
             });
             const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                return createRowHeaders( (yAxisDimensions.value as Map<string,string[]>) );
-            } );
-
-            /**
-             * ContextInfo contains the Y-Axis dimensions that are not rendered as vertical or horizontal header,
-             * but should be rendered as text underneath each image.
-             *
-             * When we have less than 3 dimensions, this will be empty
-             */
-            const contextInfo = computed<string[]>( (): string[] => {
-                const dimensions = metaDataState.selectedYSortOrder;
-                // Remove last row order dimension - that'll be rendered as a header by ValueRow
-                dimensions.pop();
-                for( let i = 0; i < MAX_HEADERS; i++ ) {
-                    // remove headers that'll be rendered by TitleRow
-                    dimensions.pop()
-                }
-
-                return dimensions;
+                const orderedDimensionMap = new Map<string,string[]>();
+                metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get( dimension ) || [] ) );
+                return createRowHeaders( orderedDimensionMap );
             } );
 
             const columnHeaders = computed<string[]>( (): string[] => {
@@ -141,7 +127,17 @@
                 }
                 return metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension ) || [];
             } );
-            const dimensions = computed( () => {
+
+            // ----------
+            // Sidebar state
+            // ---------
+
+            const sidebarIsVisible = ref(false);
+            const onToggleSidebar = function () {
+                sidebarIsVisible.value = !sidebarIsVisible.value;
+            };
+
+            const dimensions = computed<Map<string, string[]>>( () => {
 				if( metaDataState.metaData === null) {
 					return new Map();
 				}
@@ -241,8 +237,8 @@
                 grid,
                 rowHeaders,
                 columnHeaders,
-                contextInfo,
-                ...toRefs( metaDataState )
+                ...toRefs( metaDataState ),
+                preferredOrderOfDimensions: ref( preferredOrderOfDimensions )
             }
         },
 	} );

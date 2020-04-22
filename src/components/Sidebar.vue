@@ -14,11 +14,11 @@
                 </label>
             </fieldset>
 
-            <fieldset v-show="xAxis">
+            <fieldset v-show="sortValues.length > 0">
                 <legend>Row Sort</legend>
                 <label>
                     <select :name="'yAxisPrimary'" v-model="yAxis">
-                        <option value="" disabled>Select Y-Axis</option>
+                        <option value="-1" disabled>Select Y-Axis</option>
                         <option v-for="(value, index) in sortValues" :key="index" :value="index">
                             {{ value.join(' > ') }}
                         </option>
@@ -34,25 +34,47 @@
 </template>
 
 <script>
-	import {computed, ref} from '@vue/composition-api';
+	import {computed, ref, watch} from '@vue/composition-api';
+	import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
 	export default {
 		name: "Sidebar",
-		props: [ 'sidebarIsVisible', 'dimensions', 'metadata' ],
+		props: {
+			sidebarIsVisible: Boolean,
+            defaultDimension: String,
+			preferredOrderOfDimensions: Array,
+            dimensions: {
+				type: Map,
+                default: () => new Map()
+            }
+        },
 		setup( props, { emit } ) {
 			const xAxis = ref('');
-			const yAxis = ref(0);
-
-			const sortValues = computed(() => {
-				if( props.metadata === null ) {
-					return [];
-				}
-				return props.metadata.getSortDimensionsNames( xAxis.value );
-			});
+			const yAxis = ref(-1);
 
 			const xAxisOptions = computed(() => {
-				return Array.from( props.dimensions.keys() );
+				return props.preferredOrderOfDimensions.reduce( ( options, dimension ) => {
+					return props.dimensions.has( dimension ) ? [...options, dimension] : options
+				}, [] );
 			});
+
+			// This is for initializing with the default value the app chose when the JSON was loaded
+			watch(
+				() => props.defaultDimension,
+				defaultDimension => {
+					if ( xAxis.value === '' && defaultDimension !== '' ) {
+						xAxis.value = defaultDimension;
+						yAxis.value = 0;
+                    }
+				}
+			);
+
+			const sortValues = computed( () => {
+				if( props.dimensions.size === 0 || !xAxis.value ) {
+					return [];
+				}
+				return createDimensionCombinations( xAxisOptions.value.filter( dimension => dimension !== xAxis.value ) );
+			} );
 
 			const onSubmit = e => {
 				e.preventDefault();
@@ -61,7 +83,7 @@
 					xAxis: xAxis.value,
 					yAxis: sortValues.value[yAxis.value]
 				});
-			}
+			};
 
             return {
 				xAxis,
