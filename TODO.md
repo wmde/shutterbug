@@ -13,8 +13,14 @@
 - [ ] Preserve image aspect ratio in overview, to visually distinguish between image sizes.
 
 ## New features
-- Hosting: Put shutterbug on a public page.
-- Show navigation view to switch between tests. This means that the static `screenshots` directory will contain 1 more level, one for each campaign run. The directory name will be a state in `App` and can be changed through the URL. When no directory is selcted, show selection view.
-- Display date when the images were generated (date is already part of the Metadata)
-- Hide unneccessary columns, e.g. show only Firefox A/B tests.
-- Have a set of preset selections for common comparisons.
+- [ ] Hosting: Put shutterbug on a public page.
+- [ ] Show navigation view to switch between tests. This means that the static `screenshots` 
+	  directory will contain 1 more level, one for each campaign run. The directory name
+	  will be a state in `App` and can be changed through the URL. When no directory is
+	  selected, show selection view.
+- [ ] Display date when the images were generated (date is already part of the Metadata)
+- [ ] Find a way to have fewer empty cells from invalid tests due to unsupported browsers
+	of the platform or unsupported resolutions on Linux. Talk to UX to comue up with
+	solutions
+- [ ] Hide unneccessary columns, e.g. show only Firefox A/B tests.
+- [ ] Have a set of preset selections for common comparisons.
