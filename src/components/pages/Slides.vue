@@ -11,6 +11,7 @@
                 v-bind:default-dimension="selectedXDimension"
                 v-bind:preferred-order-of-dimensions="preferredOrderOfDimensions"
                 v-on:select-axes="onSelectAxes"
+                v-on:select-campaign="$emit('select-campaign', $event)"
         ></sidebar>
 
         <stage
