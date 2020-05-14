@@ -4,7 +4,7 @@
             <Icon :icon="'close'" class="slideshow--close-icon"></Icon>
         </a>
         <div class="slideshow--screenshot">
-            <img v-if="currentTestcase.isValid" :src="`screenshots/${currentTestcase.screenshotFilename}`" :alt="currentTestcase.screenshotFilename">
+            <img v-if="currentTestcase.isValid" :src="`screenshots/${campaign}/${currentTestcase.screenshotFilename}`" :alt="currentTestcase.screenshotFilename">
             <span v-else>
                 {{currentTestcase.invalidReason}}
             </span>
@@ -40,6 +40,7 @@
 		name: "Slideshow",
 		components: { Icon },
 		props: {
+            campaign: String,
 			slideshowIsVisible: Boolean,
 			slideshowPosition: SlideshowPosition,
 			grid: Array,

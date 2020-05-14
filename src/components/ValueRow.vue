@@ -13,7 +13,7 @@
         >
             <a href="" class="row--screenshot-content" v-on:click.prevent ="$emit( 'open-slideshow', { rowIndex, columnIndex } )">
                 <div v-if="testcase.isValid">
-                    <img :src="`screenshots/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
+                    <img :src="`screenshots/${campaign}/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
                     <div v-for="dimensionName in additionalHeaderInfo"
                          :key="dimensionName"
                          class="row--screenshot-metadata">
@@ -36,6 +36,7 @@
 	export default defineComponent( {
 		name: "ValueRow",
         props: {
+            campaign: String,
 			testcases: Array,
 			header: RowHeader,
             rowIndex: Number,
