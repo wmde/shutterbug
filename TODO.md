@@ -14,7 +14,7 @@
 
 ## New features
 - [ ] Hosting: Put shutterbug on a public page.
-- [ ] Show navigation view to switch between tests. This means that the static `screenshots` 
+- [X] Show navigation view to switch between tests. This means that the static `screenshots` 
 	  directory will contain 1 more level, one for each campaign run. The directory name
 	  will be a state in `App` and can be changed through the URL. When no directory is
 	  selected, show selection view.

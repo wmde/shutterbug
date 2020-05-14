@@ -10,10 +10,11 @@
                 :key="folder.campaign"
                 class="folders__item folder"
             >
-                <a class="folder__title"
-                   @click.prevent="$emit( 'select-campaign', folder.campaign )"
-                   href="#"
-                >{{ folder.campaign }}</a>
+                <router-link
+                        class="folder__title"
+                        :to="`/slides/${folder.campaign}`">
+                    {{ folder.campaign }}
+                </router-link>
                 <span class="folder__info" >( {{ folder.testCaseCount }} tests )</span>
             </li>
         </ol>
@@ -55,7 +56,7 @@
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @import "../assets/settings";
 
     .page-overview {
         margin-top: $header-height;

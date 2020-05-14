@@ -30,7 +30,7 @@
                 Sort
             </button>
             <div class="sidebar__navigation">
-                <a href="#" @click.prevent="$emit( 'select-campaign', '' )">Back to overview</a>
+                <router-link to="/">Back to overview</router-link>
             </div>
         </div>
     </form>
