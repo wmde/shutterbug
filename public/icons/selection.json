@@ -4,6 +4,34 @@
     {
       "icon": {
         "paths": [
+          "M854 768v-426h-684v426h684zM854 256q34 0 59 26t25 60v426q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h256l86 86h342z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "folder_open"
+        ],
+        "grid": 24
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 1,
+        "prevSize": 24,
+        "name": "folder"
+      },
+      "setIdx": 0,
+      "setId": 6,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M511.942 421.438l402.751-402.56c24.992-24.96 65.504-24.96 90.496 0s24.992 65.28 0 90.24l-402.751 402.88 402.751 402.88c24.992 24.96 24.992 65.28 0 90.24-24.992 25.28-65.504 25.28-90.496 0l-402.751-402.56-402.751 402.56c-24.992 25.28-65.504 25.28-90.496 0-24.992-24.96-24.992-65.28 0-90.24l402.751-402.88-402.751-402.88c-24.992-24.96-24.992-65.28 0-90.24s65.504-24.96 90.496 0l402.751 402.56z"
         ],
         "attrs": [
@@ -29,7 +57,7 @@
         "name": "close",
         "prevSize": 32
       },
-      "setIdx": 0,
+      "setIdx": 1,
       "setId": 5,
       "iconIdx": 0
     },
@@ -62,7 +90,7 @@
         "name": "down",
         "prevSize": 32
       },
-      "setIdx": 0,
+      "setIdx": 1,
       "setId": 5,
       "iconIdx": 1
     },
@@ -95,7 +123,7 @@
         "name": "left",
         "prevSize": 32
       },
-      "setIdx": 0,
+      "setIdx": 1,
       "setId": 5,
       "iconIdx": 2
     },
@@ -128,7 +156,7 @@
         "name": "right",
         "prevSize": 32
       },
-      "setIdx": 0,
+      "setIdx": 1,
       "setId": 5,
       "iconIdx": 3
     },
@@ -161,7 +189,7 @@
         "name": "up",
         "prevSize": 32
       },
-      "setIdx": 0,
+      "setIdx": 1,
       "setId": 5,
       "iconIdx": 4
     },
@@ -189,7 +217,7 @@
         "prevSize": 32,
         "name": "win7"
       },
-      "setIdx": 1,
+      "setIdx": 2,
       "setId": 4,
       "iconIdx": 0
     },
@@ -217,7 +245,7 @@
         "name": "banner",
         "prevSize": 32
       },
-      "setIdx": 2,
+      "setIdx": 3,
       "setId": 3,
       "iconIdx": 0
     },
@@ -245,7 +273,7 @@
         "name": "linux",
         "prevSize": 32
       },
-      "setIdx": 2,
+      "setIdx": 3,
       "setId": 3,
       "iconIdx": 1
     },
@@ -274,7 +302,7 @@
         "name": "macos",
         "prevSize": 32
       },
-      "setIdx": 2,
+      "setIdx": 3,
       "setId": 3,
       "iconIdx": 2
     },
@@ -302,7 +330,7 @@
         "name": "resolution",
         "prevSize": 32
       },
-      "setIdx": 2,
+      "setIdx": 3,
       "setId": 3,
       "iconIdx": 3
     },
@@ -330,7 +358,7 @@
         "name": "win10",
         "prevSize": 32
       },
-      "setIdx": 2,
+      "setIdx": 3,
       "setId": 3,
       "iconIdx": 4
     },
@@ -359,7 +387,7 @@
         "name": "android",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 0
     },
@@ -392,7 +420,7 @@
         "name": "camera",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 1
     },
@@ -420,7 +448,7 @@
         "name": "chrome",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 2
     },
@@ -449,7 +477,7 @@
         "name": "edge",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 3
     },
@@ -477,7 +505,7 @@
         "name": "firefox",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 4
     },
@@ -505,7 +533,7 @@
         "name": "ie11",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 5
     },
@@ -534,7 +562,7 @@
         "name": "ios",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 6
     },
@@ -562,7 +590,7 @@
         "name": "opera",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 7
     },
@@ -595,7 +623,7 @@
         "name": "pointer",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 8
     },
@@ -623,7 +651,7 @@
         "name": "safari",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 9
     },
@@ -656,7 +684,7 @@
         "name": "settings",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 10
     },
@@ -689,7 +717,7 @@
         "name": "zoom",
         "prevSize": 32
       },
-      "setIdx": 3,
+      "setIdx": 4,
       "setId": 2,
       "iconIdx": 11
     }
