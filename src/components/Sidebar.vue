@@ -1,6 +1,6 @@
 <template>
     <form class="sidebar" v-bind:class="{'is-visible' : sidebarIsVisible}">
-        <div class="sidebar--content">
+        <div class="sidebar__content">
 
             <fieldset>
                 <legend>Columns</legend>
@@ -26,9 +26,12 @@
                 </label>
             </fieldset>
 
-            <button class="sidebar--button" v-on:click="onSubmit">
+            <button class="sidebar__button" v-on:click="onSubmit">
                 Sort
             </button>
+            <div class="sidebar__navigation">
+                <router-link to="/">Back to overview</router-link>
+            </div>
         </div>
     </form>
 </template>
@@ -112,12 +115,12 @@
             left: 0;
         }
 
-        &--content {
+        &__content {
             margin-top: $header-height;
             padding: 20px;
         }
 
-        &--button {
+        &__button {
             background: $sidebar-button-background;
             color: $sidebar-button-color;
             font-family: $font-family;
@@ -127,6 +130,16 @@
             margin: 0;
             padding: 10px 20px;
             width: 100%;
+        }
+
+        &__navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+
+            a {
+                color: $font-color-light;
+            }
         }
 
         fieldset {

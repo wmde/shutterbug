@@ -5,6 +5,7 @@ import Vue, {VNode} from "vue";
 const Row = Vue.extend({
     functional: true,
     props: {
+        campaign: String,
         headers: Array,
         testcases: Array,
         rowIndex: Number,
@@ -13,7 +14,7 @@ const Row = Vue.extend({
     render: function (createElement, context): VNode[] {
         const listeners = context.listeners;
         const openSlideshow = listeners['open-slideshow'];
-        const { selectedYSortOrder, headers, rowIndex, testcases } = context.props;
+        const { selectedYSortOrder, headers, rowIndex, testcases, campaign } = context.props;
         const elements = [];
         // Add additional title rows when the headers have more than 1 element, indicating the start of a new "subsection"
         const hasSubsectionHeader = selectedYSortOrder.length > 1 && headers.length > 1;
@@ -27,6 +28,7 @@ const Row = Vue.extend({
         }
         elements.push(createElement(ValueRow, {
                 props: {
+                    campaign,
                     testcases,
                     rowIndex,
                     selectedYSortOrder,

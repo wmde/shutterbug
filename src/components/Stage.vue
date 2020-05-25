@@ -8,6 +8,7 @@
                  :rowIndex="index"
                  :headers="rowHeaders[index]"
                  :selected-y-sort-order="selectedYSortOrder"
+                 :campaign="campaign"
                  v-on:open-slideshow="( slideshowPosition ) => $emit( 'open-slideshow', slideshowPosition )"
             />
         </div>
@@ -22,6 +23,7 @@
 		name: "Stage",
 		components: { XAxisRow, Row },
 		props : {
+            campaign: String,
 			sidebarIsVisible: Boolean,
 			grid: Array,
             rowHeaders: Array,
