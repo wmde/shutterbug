@@ -13,7 +13,7 @@
 - [ ] Preserve image aspect ratio in overview, to visually distinguish between image sizes.
 
 ## New features
-- [ ] Hosting: Put shutterbug on a public page.
+- [X] Hosting: Put shutterbug on a public page.
 - [X] Show navigation view to switch between tests. This means that the static `screenshots` 
 	  directory will contain 1 more level, one for each campaign run. The directory name
 	  will be a state in `App` and can be changed through the URL. When no directory is
