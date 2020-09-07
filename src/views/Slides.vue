@@ -177,8 +177,8 @@
                     return;
                 }
 
-                slideshowPosition.rowIndex +=  deltaY;
-                slideshowPosition.columnIndex +=  deltaX;
+                slideshowPosition.rowIndex += deltaY;
+                slideshowPosition.columnIndex += deltaX;
             };
             const onOpenSlideshow = function ( atPosition: SlideshowPosition ) {
                 slideshowIsVisible.value = true;

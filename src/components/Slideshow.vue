@@ -1,32 +1,36 @@
 <template>
     <div class="slideshow" :class="{'is-visible' : slideshowIsVisible}">
-        <a href="" class="slideshow--close" v-on:click.prevent="$emit('close-slideshow')">
-            <Icon :icon="'close'" class="slideshow--close-icon"></Icon>
-        </a>
+        <div class="slideshow--sidebar">
+            <a href="" class="slideshow--close" v-on:click.prevent="$emit('close-slideshow')">
+                <Icon :icon="'close'" class="slideshow--close-icon"></Icon>
+            </a>
+            <table class="slideshow--testcase-metadata">
+                <tr v-for="dimensionName in dimensions.keys()" :key="dimensionName">
+                    <td><strong>{{ dimensionName }}:</strong></td>
+                    <td>{{ currentTestcase.dimensions.get( dimensionName ) || '' }}</td>
+                </tr>
+            </table>
+            <div class="slideshow--controls">
+                <a href="" v-on:click.prevent="$emit('navigate-by', -1, 0)" class="slideshow--controls-left" :class="{ 'active' : canNavigateLeft }">
+                    <Icon :icon="'left'" class="slideshow--controls-left-icon"></Icon>
+                </a>
+                <a href="" v-on:click.prevent="$emit('navigate-by',0, -1)" class="slideshow--controls-up" :class="{ 'active' : canNavigateUp }">
+                    <Icon :icon="'up'" class="slideshow--controls-up-icon"></Icon>
+                </a>
+                <a href="" v-on:click.prevent="$emit('navigate-by', 0, 1)" class="slideshow--controls-down" :class="{ 'active' : canNavigateDown }">
+                    <Icon :icon="'down'" class="slideshow--controls-down-icon"></Icon>
+                </a>
+                <a href="" v-on:click.prevent="$emit('navigate-by', 1, 0)" class="slideshow--controls-right" :class="{ 'active' : canNavigateRight }">
+                    <Icon :icon="'right'" class="slideshow--controls-right-icon"></Icon>
+                </a>
+            </div>
+        </div>
         <div class="slideshow--screenshot">
             <img v-if="currentTestcase.isValid" :src="`screenshots/${campaign}/${currentTestcase.screenshotFilename}`" :alt="currentTestcase.screenshotFilename">
             <span v-else>
                 {{currentTestcase.invalidReason}}
             </span>
-            <span class="slideshow--testcase-metadata">
-                <span v-for="dimensionName in dimensions.keys()"
-                        :key="dimensionName">
-                            {{ currentTestcase.dimensions.get( dimensionName ) || '' }}
-                </span>
-            </span>
         </div>
-        <a href="" v-if="canNavigateLeft" v-on:click.prevent="$emit('navigate-by', -1, 0)" class="slideshow--controls-left">
-            <Icon :icon="'left'" class="slideshow--controls-left-icon"></Icon>
-        </a>
-        <a href="" v-if="canNavigateUp" v-on:click.prevent="$emit('navigate-by',0, -1)" class="slideshow--controls-up">
-            <Icon :icon="'up'" class="slideshow--controls-up-icon"></Icon>
-        </a>
-        <a href="" v-if="canNavigateDown" v-on:click.prevent="$emit('navigate-by', 0, 1)" class="slideshow--controls-down">
-            <Icon :icon="'down'" class="slideshow--controls-down-icon"></Icon>
-        </a>
-        <a href="" v-if="canNavigateRight" v-on:click.prevent="$emit('navigate-by', 1, 0)" class="slideshow--controls-right">
-            <Icon :icon="'right'" class="slideshow--controls-right-icon"></Icon>
-        </a>
     </div>
 </template>
 
@@ -98,6 +102,7 @@
         right: 0;
         background: $slideshow-background;
         z-index: 100;
+        color: $font-color-light;
 
         visibility: hidden;
         transform: scale(1.2);
@@ -110,46 +115,61 @@
             opacity: 1;
         }
 
+        &--sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $sidebar-width;
+            height: 100%;
+            background: #000;
+            padding: 80px 20px 20px;
+        }
+
         &--screenshot {
             position: absolute;
-            display: flex;
-            flex-direction: column;
-            top: 100px;
-            bottom: 100px;
-            left: 100px;
-            right: 100px;
-            padding: 100px;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: $font-color-light;
+            top: 0;
+            left: $sidebar-width;
+            right: 0;
+            height: 100%;
+            overflow-y: auto;
+            padding: 30px;
 
             img {
                 width: auto;
-                flex-shrink: 1;
             }
         }
 
         &--close {
             position: absolute;
             top: 20px;
-            right: 20px;
+            left: 20px;
             height: 60px;
             width: 60px;
 
             &-icon {
                 height: 30px;
                 width: 30px;
-                margin: 15px;
             }
         }
 
         &--controls {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -100px;
+            height: 200px;
+            width: 200px;
+
             &-up, &-down, &-left, &-right {
                 position: absolute;
                 display: block;
                 height: 60px;
                 width: 60px;
+                opacity: 0.3;
+
+                &.active {
+                    opacity: 1;
+                }
             }
 
             &-up, &-down {
