@@ -1,6 +1,6 @@
 import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
 import {ScreenshotMetaDataJsonInterface} from "@/model/ScreenshotMetaDataJsonInterface";
-import {BANNER, BROWSER, OPERATING_SYSTEM, RESOLUTION} from "@/model/Dimensions";
+import {BANNER, PLATFORM, RESOLUTION} from "@/model/Dimensions";
 
 describe('ScreenshotMetaData', () => {
 
@@ -9,22 +9,12 @@ describe('ScreenshotMetaData', () => {
         campaign: '00-ba-200416',
         dimensions: [
             [
-                "operating_system",
-                [
-                    "win10",
-                    "win7",
-                    "macos",
-                    "linux"
-                ]
-            ],
-            [
-                "browser",
-                [
-                    "edge",
-                    "ie11",
-                    "firefox",
+                "platform",
+                [ "edge", "ie11",
+                    "firefox_win10", "chrome_win10",
                     "safari",
-                    "chrome"
+                    "firefox_macos", "chrome_macos",
+                    "firefox_linux", "chrome_linux"
                 ]
             ],
             [
@@ -46,11 +36,7 @@ describe('ScreenshotMetaData', () => {
                 "invalidReason": "Unsupported resolution",
                 "dimensions": [
                     [
-                        "operating_system",
-                        "win10"
-                    ],
-                    [
-                        "browser",
+                        "platform",
                         "edge"
                     ],
                     [
@@ -73,7 +59,7 @@ describe('ScreenshotMetaData', () => {
 
             expect( metaData.createdOn ).toStrictEqual( new Date(1234) );
             expect( metaData.campaign ).toBe( '00-ba-200416');
-            expect( metaData.dimensions.size ).toBe( 4 );
+            expect( metaData.dimensions.size ).toBe( 3 );
             expect( metaData.testCases.length ).toBe( 1 );
         });
 
@@ -85,24 +71,24 @@ describe('ScreenshotMetaData', () => {
     it('can get subset of dimensions', () => {
         const metaData = ScreenshotMetaData.fromObject( rawData );
 
-        const dimensionSubSet = metaData.getDimensionSubset( [ BANNER, BROWSER ] );
+        const dimensionSubSet = metaData.getDimensionSubset( [ BANNER, PLATFORM ] );
 
         expect( dimensionSubSet.get(BANNER) ).toStrictEqual( ['ctrl'] )
-        expect( dimensionSubSet.get(BROWSER) ).toStrictEqual( [
-            "edge",
-            "ie11",
-            "firefox",
+        expect( dimensionSubSet.get(PLATFORM) ).toStrictEqual( [
+            "edge", "ie11",
+            "firefox_win10", "chrome_win10",
             "safari",
-            "chrome"
+            "firefox_macos", "chrome_macos",
+            "firefox_linux", "chrome_linux"
         ] )
     })
 
     it('can get the remaining dimensions', () => {
         const metaData = ScreenshotMetaData.fromObject( rawData );
 
-        const remaining = metaData.getRemainingDimensions( [ BANNER, BROWSER ] );
+        const remaining = metaData.getRemainingDimensions( [ BANNER, PLATFORM ] );
 
-        expect( remaining ).toStrictEqual( [ OPERATING_SYSTEM, RESOLUTION] );
+        expect( remaining ).toStrictEqual( [RESOLUTION] );
     } );
 
 });
