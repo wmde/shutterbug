@@ -13,7 +13,9 @@
         >
             <a href="" class="row--screenshot-content" v-on:click.prevent ="$emit( 'open-slideshow', { rowIndex, columnIndex } )">
                 <div v-if="testcase.isValid">
-                    <img :src="`screenshots/${campaign}/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
+                    <div class="row--screenshot-image" :class="{ 'desktop': testcase.isDesktop() }">
+                        <img :src="`screenshots/${campaign}/${testcase.screenshotFilename}`" :alt="testcase.screenshotFilename">
+                    </div>
                     <div v-for="dimensionName in additionalHeaderInfo"
                          :key="dimensionName"
                          class="row--screenshot-metadata">
@@ -113,6 +115,21 @@
                 color: $font-color-dark;
                 text-decoration: none;
                 text-align: center;
+            }
+
+            &-image.desktop {
+                position: relative;
+                height: 0;
+                padding-bottom: 56.25%; /* 16:9 */
+                overflow-y: hidden;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: auto;
+                }
             }
 
             &-metadata {
