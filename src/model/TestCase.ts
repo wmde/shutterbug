@@ -19,6 +19,10 @@ export class TestCase {
         return this.dimensions.get( name ) || '';
     }
 
+    isDesktop(): boolean {
+        return !this.dimensions.has('device');
+    }
+
     static fromObject( obj: TestCaseJsonInterface ): TestCase {
         const dimensions = new Map<string, string>();
         obj.dimensions.forEach( ( [ key, value ] ) => {
