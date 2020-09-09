@@ -1,4 +1,4 @@
-import {BANNER, BROWSER, DimensionMap, OPERATING_SYSTEM} from "@/model/Dimensions";
+import {BANNER, DimensionMap, PLATFORM} from "@/model/Dimensions";
 import {createRowHeaders} from "@/model/createRowHeaders";
 import {RowHeader} from "@/model/RowHeader";
 
@@ -18,41 +18,35 @@ describe( 'createRowHeaders', () => {
     it('creates nested headers', () => {
         const dimensions: DimensionMap = new Map<string, string[]>([
             [BANNER, ['ctrl', 'var']],
-            [BROWSER, ['chrome', 'edge', 'firefox']]
+            [PLATFORM, [ 'edge', 'ie11',
+                'firefox_win10', 'chrome_win10',
+                'safari',
+                'firefox_macos', 'chrome_macos',
+                'firefox_linux', 'chrome_linux' ]
+            ]
         ]);
         const rowHeaders = createRowHeaders( dimensions );
 
         expect( rowHeaders ).toStrictEqual([
-            [ new RowHeader( BANNER, 'ctrl', 3), new RowHeader( BROWSER, 'chrome', 1) ],
-            [ new RowHeader( BROWSER, 'edge', 1) ],
-            [ new RowHeader( BROWSER, 'firefox', 1) ],
-            [ new RowHeader( BANNER, 'var', 3), new RowHeader( BROWSER, 'chrome', 1)  ],
-            [ new RowHeader( BROWSER, 'edge', 1) ],
-            [ new RowHeader( BROWSER, 'firefox', 1) ],
-        ])
-    })
+            [ new RowHeader( BANNER, 'ctrl', 9), new RowHeader( PLATFORM, 'edge', 1) ],
+            [ new RowHeader( PLATFORM, 'ie11', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_win10', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_win10', 1) ],
+            [ new RowHeader( PLATFORM, 'safari', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_macos', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_macos', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_linux', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_linux', 1) ],
 
-    it('creates deeply nested headers', () => {
-        const dimensions: DimensionMap = new Map<string, string[]>([
-            [BANNER, ['ctrl', 'var']],
-            [BROWSER, ['chrome', 'edge', 'firefox']],
-            [OPERATING_SYSTEM, ['win10', 'macos']],
-        ]);
-        const rowHeaders = createRowHeaders( dimensions );
-
-        expect( rowHeaders ).toStrictEqual([
-            [ new RowHeader( BANNER, 'ctrl', 6), new RowHeader( BROWSER, 'chrome', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
-            [ new RowHeader( BROWSER, 'edge', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
-            [ new RowHeader( BROWSER, 'firefox', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
-            [ new RowHeader( BANNER, 'var', 6), new RowHeader( BROWSER, 'chrome', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
-            [ new RowHeader( BROWSER, 'edge', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
-            [ new RowHeader( BROWSER, 'firefox', 2), new RowHeader( OPERATING_SYSTEM, 'win10', 1) ],
-            [ new RowHeader( OPERATING_SYSTEM, 'macos', 1) ],
+            [ new RowHeader( BANNER, 'var', 9), new RowHeader( PLATFORM, 'edge', 1) ],
+            [ new RowHeader( PLATFORM, 'ie11', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_win10', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_win10', 1) ],
+            [ new RowHeader( PLATFORM, 'safari', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_macos', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_macos', 1) ],
+            [ new RowHeader( PLATFORM, 'firefox_linux', 1) ],
+            [ new RowHeader( PLATFORM, 'chrome_linux', 1) ],
         ])
     })
 })
