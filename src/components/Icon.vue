@@ -1,6 +1,6 @@
 <template>
     <svg class="icon">
-        <use v-bind="{ 'xlink:href': '/icons/symbol-defs.svg#icon-' + icon }"></use>
+        <use v-bind="{ 'xlink:href': '/assets/symbol-defs.svg#icon-' + icon }"></use>
     </svg>
 </template>
 
