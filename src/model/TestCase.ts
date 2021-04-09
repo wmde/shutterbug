@@ -1,5 +1,4 @@
-import {ALLOWED_DIMENSIONS} from "./Dimensions";
-import {TestCaseJsonInterface} from "@/model/TestCaseJsonInterface";
+import { TestCase as RawTestCase } from "@/model/parseMetadata";
 
 export class TestCase {
     readonly isValid: boolean;
@@ -23,17 +22,8 @@ export class TestCase {
         return !this.dimensions.has('device');
     }
 
-    static fromObject( obj: TestCaseJsonInterface ): TestCase {
-        const dimensions = new Map<string, string>();
-        obj.dimensions.forEach( ( [ key, value ] ) => {
-            if ( key === undefined || value === undefined ) {
-                throw Error('Dimension array must consist of key-value arrays');
-            }
-            if ( ALLOWED_DIMENSIONS.indexOf( key) === -1 ) {
-                throw Error( `Invalid dimension: ${key}`)
-            }
-            dimensions.set( key, value )
-        } );
+    static fromObject( obj: RawTestCase ): TestCase {
+        const dimensions = new Map<string, string>(obj.dimensions);
         return new TestCase( dimensions, obj.bannerUrl, obj.invalidReason );
     }
 

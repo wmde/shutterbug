@@ -32,26 +32,6 @@ describe('TestCase', () => {
             expect( testCase.getDimension( RESOLUTION ) ).toBe( '1024x768' );
             expect( testCase.getDimension( BANNER ) ).toBe( 'ctrl' );
         } );
-
-        it('validates dimension tuples', () => {
-            expect( () => {
-                TestCase.fromObject( {
-                    dimensions: [ ['platform'] ],
-                    bannerUrl: '',
-                    invalidReason: ''
-                } );
-            }).toThrow('Dimension array must consist of key-value arrays')
-        } );
-
-        it('allows only isValid dimensions', () => {
-            expect( () => {
-                TestCase.fromObject( {
-                    dimensions: [ ['pudding', 'chocolate'] ],
-                    bannerUrl: '',
-                    invalidReason: ''
-                } )
-            }).toThrow('Invalid dimension: pudding')
-        })
-    } )
+    } );
 
 } );

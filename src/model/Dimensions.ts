@@ -1,9 +1,8 @@
-// TODO maybe use types instead of string constants here
 export const BANNER = 'banner';
 export const DEVICE = 'device';
-export const PLATFORM = 'platform';
 export const ORIENTATION = 'orientation';
+export const PLATFORM = 'platform';
 export const RESOLUTION = 'resolution';
-export const ALLOWED_DIMENSIONS = [BANNER, DEVICE, PLATFORM, ORIENTATION, RESOLUTION];
 
+// TODO maybe add union type consisting of the string constants and use that tye in DimensionMap
 export type DimensionMap = Map<string,string[]>

@@ -11,6 +11,7 @@
   "dependencies": {
     "@vue/composition-api": "^0.6.7",
     "core-js": "^3.10.1",
+    "runtypes": "^6.0.0",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1"
   },

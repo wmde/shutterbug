@@ -1,10 +1,10 @@
 import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-import {ScreenshotMetaDataJsonInterface} from "@/model/ScreenshotMetaDataJsonInterface";
+import {MetaData as RawMetadata} from "@/model/parseMetadata";
 import {BANNER, PLATFORM, RESOLUTION} from "@/model/Dimensions";
 
 describe('ScreenshotMetaData', () => {
 
-    const rawData: ScreenshotMetaDataJsonInterface = {
+    const rawData: RawMetadata = {
         createdOn: 1234,
         campaign: '00-ba-200416',
         dimensions: [
