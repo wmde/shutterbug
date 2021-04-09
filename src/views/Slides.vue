@@ -48,6 +48,7 @@
     import {createGrid} from "@/model/createGrid";
     import SlideshowPosition from "@/model/slideshowPosition";
     import {createDimensionCombinations} from "@/model/createDimensionCombinations";
+	import {parseMetadata} from "@/model/parseMetadata";
 
     interface MetadataState {
         isLoading: boolean;
@@ -82,9 +83,9 @@
             const metaDataState = reactive( metaDataInit );
             watchEffect(() => {
                 fetch( `screenshots/${ props.campaign }/metadata.json` )
-                .then( response => response.json() )
-                .then( metaDataObj =>  {
-                    const metadata = ScreenshotMetaData.fromObject( metaDataObj );
+                .then( response => response.text() )
+                .then( metaDataStr =>  {
+                    const metadata = ScreenshotMetaData.fromObject( parseMetadata( metaDataStr ) );
                     const hasDimension = ( dimension: string ) => metadata.dimensions.has( dimension );
                     // select default X dimension in order of preference
                     const selectedXDimension = preferredOrderOfDimensions.find( hasDimension ) || '';

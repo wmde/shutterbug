@@ -1,16 +1,13 @@
-import {TestCase} from "@/model/TestCase";
-import {ScreenshotMetaDataJsonInterface} from "@/model/ScreenshotMetaDataJsonInterface";
-import {DimensionMap} from "@/model/Dimensions";
+import { TestCase } from "@/model/TestCase";
+import { DimensionMap } from "@/model/Dimensions";
+import { MetaData } from "@/model/parseMetadata";
 
 export class ScreenshotMetaData {
     constructor( readonly createdOn: Date, readonly campaign: string, readonly dimensions: DimensionMap, readonly testCases: TestCase[]) {
     }
 
-    public static fromObject( obj: ScreenshotMetaDataJsonInterface ): ScreenshotMetaData {
-        const dimensions = new Map<string,string[]>();
-        obj.dimensions.forEach( ( [ key, dimensionValues] ) => {
-            dimensions.set( key, dimensionValues )
-        } );
+    public static fromObject( obj: MetaData ): ScreenshotMetaData {
+        const dimensions: DimensionMap = new Map(obj.dimensions);
         const testCases = obj.testCases.map( testCaseObj => TestCase.fromObject( testCaseObj ) );
         return new ScreenshotMetaData( new Date( obj.createdOn ), obj.campaign, dimensions, testCases );
     }
