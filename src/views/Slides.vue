@@ -17,7 +17,6 @@
         <stage
                 v-bind:sidebar-is-visible="sidebarIsVisible"
                 v-bind:grid="grid"
-                v-bind:row-headers="rowHeaders"
                 v-bind:column-headers="columnHeaders"
                 v-bind:selected-y-sort-order="selectedYSortOrder"
                 v-bind:campaign="campaign"
@@ -47,8 +46,6 @@
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
     import {BANNER, DEVICE, PLATFORM, ORIENTATION, RESOLUTION} from "@/model/Dimensions";
     import {createGrid} from "@/model/createGrid";
-    import {createRowHeaders} from "@/model/createRowHeaders";
-    import {RowHeader} from "@/model/RowHeader";
     import SlideshowPosition from "@/model/slideshowPosition";
     import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 	import {parseMetadata} from "@/model/parseMetadata";
@@ -115,14 +112,6 @@
                 }
                 return createGrid( metaDataState.metaData.testCases, (yAxisDimensions.value as Map<string,string[]>), metaDataState.selectedYSortOrder );
             });
-            const rowHeaders = computed<RowHeader[][]>((): RowHeader[][] => {
-                if( metaDataState.metaData === null) {
-                    return [];
-                }
-                const orderedDimensionMap = new Map<string,string[]>();
-                metaDataState.selectedYSortOrder.forEach( dimension => orderedDimensionMap.set( dimension, yAxisDimensions.value.get( dimension ) || [] ) );
-                return createRowHeaders( orderedDimensionMap );
-            } );
 
             const columnHeaders = computed<string[]>( (): string[] => {
                 if( metaDataState.metaData === null) {
@@ -238,7 +227,6 @@
                 onSelectAxes,
                 onNavigateBy,
                 grid,
-                rowHeaders,
                 columnHeaders,
                 ...toRefs( metaDataState ),
                 preferredOrderOfDimensions: ref( preferredOrderOfDimensions )
