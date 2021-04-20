@@ -29,7 +29,7 @@ build-artifacts:
         - echo "$CI_COMMIT_SHA" >> dist/DEPLOY_ID
         - echo "$CI_JOB_STARTED_AT" >> dist/DEPLOY_ID
     artifacts:
-        name: "fundraising-assets-$CI_COMMIT_REF_NAME"
+        name: "shutterbug-$CI_COMMIT_REF_NAME"
         public: true
         paths:
             - dist
