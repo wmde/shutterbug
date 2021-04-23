@@ -117,8 +117,15 @@
                 if( metaDataState.metaData === null) {
                     return [];
                 }
-                return metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension ) || [];
-            } );
+				const headers = metaDataState.metaData.dimensions.get( metaDataState.selectedXDimension );
+				if ( headers === undefined ) {
+					return [];
+				}
+				// if we implement custom resolution sorting in `createGrid` and the "resolution" is chosen for the X axis,
+				// we need to use that sorting function here too
+				headers.sort();
+				return headers;
+			} );
 
             // ----------
             // Sidebar state
