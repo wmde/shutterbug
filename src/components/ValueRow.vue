@@ -114,14 +114,6 @@ export default defineComponent( {
 		position: relative;
 		display: flex;
 
-		&:first-of-type {
-			padding-left: $stage-gutter/2;
-		}
-
-		&:last-of-type {
-			padding-right: $stage-gutter/2;
-		}
-
 		&-content {
 			padding: 0 ($stage-gutter/2);
 			display: block;
