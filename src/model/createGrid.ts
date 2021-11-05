@@ -24,8 +24,10 @@ function cutArray( arr: TestCase[], partitionSize: number ): TestCase[][] {
     return partitions;
 }
 
-
-export function createGrid( testcases: TestCase[], rowDimensions: Map<string, string[]>, orderByDimensions: string[] ) {
+/**
+ * Convert a linear array of test cases into a "grid" of test cases (with rows and columns)
+ */
+export function createGrid( testcases: TestCase[], rowDimensions: Map<string, string[]>, orderByDimensions: string[] ): TestCase[][] {
     const compareAllDimensions = createDimensionSorter( Array.from( rowDimensions.keys() ).concat( orderByDimensions ) );
     testcases.sort( compareAllDimensions );
 
