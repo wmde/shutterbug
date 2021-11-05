@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@vue/composition-api": "^0.6.7",
+    "@vue/composition-api": "^1.0.0",
     "core-js": "^3.10.1",
     "runtypes": "^6.0.0",
     "vue": "^2.6.12",
