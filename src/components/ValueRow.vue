@@ -8,7 +8,7 @@
 		<div class="row--screenshot"
 			v-for="(testcase, columnIndex) in testcases"
 			:key="testcase.screenshotFilename"
-			:class="{'invalid' : testcase.isValid}"
+			:class="{invalid: !testcase.isValid}"
 			:style="{width: `${100/testcases.length}%`}"
 		>
 			<a href="" class="row--screenshot-content"
@@ -113,6 +113,11 @@ export default defineComponent( {
 	&--screenshot {
 		position: relative;
 		display: flex;
+
+		&.invalid {
+			border: solid 2px red;
+		}
+
 
 		&-content {
 			padding: 0 ($stage-gutter/2);
