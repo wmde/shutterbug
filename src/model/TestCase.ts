@@ -4,7 +4,7 @@ export class TestCase {
     readonly isValid: boolean;
     readonly screenshotFilename: string;
 
-    constructor( readonly dimensions: Map<string,string>, readonly bannerUrl: string, readonly invalidReason = '' ) {
+    constructor( readonly dimensions: Map<string,string>, readonly bannerUrl: string, readonly invalidReason: string = '' ) {
         this.screenshotFilename = [ ...dimensions.values() ].join( '__' ) + '.png';
         this.isValid = invalidReason === '';
     }

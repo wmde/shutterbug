@@ -37,10 +37,10 @@
 </template>
 
 <script>
-	import {computed, ref, watch} from '@vue/composition-api';
+	import {computed, ref, watch, defineComponent} from '@vue/composition-api';
 	import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
-	export default {
+	export default defineComponent({
 		name: "Sidebar",
 		props: {
 			sidebarIsVisible: Boolean,
@@ -48,7 +48,7 @@
 			preferredOrderOfDimensions: Array,
             dimensions: {
 				type: Map,
-                default: () => new Map()
+				default: () => new Map()
             }
         },
 		setup( props, { emit } ) {
@@ -96,7 +96,7 @@
 				onSubmit
             };
 		}
-	}
+	});
 </script>
 
 <style lang="scss">

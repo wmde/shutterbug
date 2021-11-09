@@ -35,12 +35,12 @@
 </template>
 
 <script>
-	import { computed } from '@vue/composition-api';
+	import { computed, defineComponent } from '@vue/composition-api';
 	import Icon from "@/components/Icon";
 
 	import SlideshowPosition from "@/model/slideshowPosition";
 
-	export default {
+	export default defineComponent({
 		name: "Slideshow",
 		components: { Icon },
 		props: {
@@ -88,7 +88,7 @@
                 canNavigateRight
 			}
 		}
-	}
+	});
 </script>
 
 <style lang="scss">
