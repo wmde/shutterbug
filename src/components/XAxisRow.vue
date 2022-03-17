@@ -6,13 +6,13 @@
 
 <script>
 
-	export default {
-		name: "XAxisRow",
-        props: {
-			headers: Array,
-            sidebarIsVisible: Boolean
-        }
+export default {
+	name: "XAxisRow",
+	props: {
+		headers: Array,
+		sidebarIsVisible: Boolean
 	}
+}
 </script>
 
 <style lang="scss">
