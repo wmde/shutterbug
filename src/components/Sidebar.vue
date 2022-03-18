@@ -41,7 +41,7 @@
 	import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
 	export default defineComponent({
-		name: "Sidebar",
+		name: "DimensionSidebar",
 		props: {
 			sidebarIsVisible: Boolean,
             defaultDimension: String,

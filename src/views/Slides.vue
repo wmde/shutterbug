@@ -58,7 +58,7 @@
     }
 
     export default defineComponent( {
-        name: 'Slides',
+        name: 'ScreenshotSlides',
         components: {
             Slideshow,
             SidebarToggle,

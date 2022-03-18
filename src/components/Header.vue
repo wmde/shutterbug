@@ -11,7 +11,7 @@
 <script>
 	import Icon from "@/components/Icon.vue";
 	export default {
-		name: "Header",
+		name: "ShutterbugHeader",
 		components: { Icon },
 	}
 </script>

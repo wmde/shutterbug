@@ -28,7 +28,7 @@
     import Icon from "@/components/Icon.vue";
 
     export default defineComponent( {
-        name: "Overview",
+        name: "ScreenshotOverview",
         components: {
             Icon
         },

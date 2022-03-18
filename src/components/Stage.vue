@@ -19,7 +19,7 @@
 	import ValueRow from "@/components/ValueRow.vue";
 
 	export default {
-		name: "Stage",
+		name: "ScreenshotStage",
 		components: { XAxisRow, ValueRow },
 		props : {
             campaign: String,

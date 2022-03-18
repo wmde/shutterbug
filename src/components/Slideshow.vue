@@ -41,7 +41,7 @@
 	import SlideshowPosition from "@/model/slideshowPosition.ts";
 
 	export default defineComponent({
-		name: "Slideshow",
+		name: "BannerSlideshow",
 		components: { Icon },
 		props: {
             campaign: String,
