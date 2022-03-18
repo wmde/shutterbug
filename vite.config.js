@@ -6,6 +6,13 @@ export default defineConfig({
   plugins: [
     createVuePlugin(),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: "@use 'sass:math';"
+      }
+    }
+  },
   resolve: {
     alias: [
       {

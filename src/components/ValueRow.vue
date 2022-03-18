@@ -77,7 +77,7 @@ export default defineComponent( {
 	&:after {
 		position: absolute;
 		content: '';
-		bottom: ($row-padding/2);
+		bottom: math.div($row-padding,2);
 		right: 0;
 		left: $axis-size;
 		border-bottom: 1px dashed $border-color;
@@ -120,7 +120,7 @@ export default defineComponent( {
 
 
 		&-content {
-			padding: 0 ($stage-gutter/2);
+			padding: 0 math.div($stage-gutter,2);
 			display: block;
 			width: 100%;
 			min-height: 100px;
@@ -160,8 +160,8 @@ export default defineComponent( {
 			position: absolute;
 			top: 0;
 			height: 100%;
-			left: ($stage-gutter/2);
-			right: ($stage-gutter/2);
+			left: math.div($stage-gutter,2);
+			right: math.div($stage-gutter,2);
 			background: #eeeeee;
 			font-size: 12px;
 

@@ -72,7 +72,7 @@
         }
 
         .folders {
-            margin: 0 (-$stage-gutter / 2);
+            margin: 0 math.div(-$stage-gutter, 2);
             display: flex;
             flex-wrap: wrap;
             align-content: stretch;
@@ -98,7 +98,7 @@
                 text-decoration: none;
                 color: $font-color-dark;
                 font-size: 125%;
-                margin: 0 ($stage-gutter / 2) 40px;
+                margin: 0 math.div($stage-gutter,2) 40px;
                 padding: 20px 20px 20px 80px;
                 border: 1px solid $border-color;
 
