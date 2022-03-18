@@ -21,4 +21,9 @@ export default defineConfig({
       }
     ]
   },
+  test: {
+    coverage: {
+      reporter: ["cobertura"]
+    }
+  }
 })

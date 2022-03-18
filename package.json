@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build --mode=prod",
-    "test:unit": "jest",
+    "test:unit": "vitest run tests/unit",
     "lint": "eslint --ext .ts,.vue src tests"
   },
   "dependencies": {
@@ -16,17 +16,17 @@
     "vue-router": "^3.5.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "1.2.2",
+    "c8": "^7.11.0",
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^8.0.0",
-    "jest-junit": "^12.0.0",
     "sass": "^1.32.11",
     "typescript": "~4.6.0",
     "vite": "^2.8.6",
-    "vite-plugin-vue2": "^1.9.3"
+    "vite-plugin-vue2": "^1.9.3",
+    "vitest": "^0.7.4"
   }
 }

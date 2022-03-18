@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest'
 import fs from "fs";
 import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
 import {BANNER, PLATFORM, RESOLUTION} from "@/model/Dimensions";
