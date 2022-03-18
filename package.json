@@ -19,7 +19,6 @@
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
-    "@vue/test-utils": "1.2.2",
     "c8": "^7.11.0",
     "eslint": "^8.0.0",
     "eslint-plugin-vue": "^8.0.0",
