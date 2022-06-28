@@ -15,9 +15,11 @@ test:
         paths:
             - node_modules
     artifacts:
-        reports:
-            junit: junit.xml
-            cobertura: coverage/cobertura-coverage.xml
+      reports:
+          junit: junit.xml
+          coverage_report:
+            coverage_format: cobertura
+            path: coverage/cobertura-coverage.xml
 
 build-artifacts:
     image: node:14-alpine
