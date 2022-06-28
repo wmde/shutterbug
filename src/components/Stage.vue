@@ -15,11 +15,11 @@
 </template>
 
 <script>
-	import XAxisRow from "@/components/XAxisRow";
-	import ValueRow from "@/components/ValueRow";
+	import XAxisRow from "@/components/XAxisRow.vue";
+	import ValueRow from "@/components/ValueRow.vue";
 
 	export default {
-		name: "Stage",
+		name: "ScreenshotStage",
 		components: { XAxisRow, ValueRow },
 		props : {
             campaign: String,

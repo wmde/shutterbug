@@ -1,3 +1,4 @@
+import { expect, describe, it } from 'vitest'
 import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
 import {MetaData as RawMetadata} from "@/model/parseMetadata";
 import {BANNER, PLATFORM, RESOLUTION} from "@/model/Dimensions";
@@ -63,7 +64,7 @@ describe('ScreenshotMetaData', () => {
             expect( metaData.testCases.length ).toBe( 1 );
         });
 
-        xit('validates dimensions', () => {
+        it.skip('validates dimensions', () => {
             // TODO
         })
     });

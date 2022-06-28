@@ -1,4 +1,6 @@
-export default interface SlideshowPosition {
+export interface SlideshowPosition {
 	rowIndex: number;
 	columnIndex: number;
 }
+
+export default SlideshowPosition;

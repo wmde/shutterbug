@@ -34,19 +34,19 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 	import { computed, defineComponent } from '@vue/composition-api';
-	import Icon from "@/components/Icon";
+	import Icon from "@/components/Icon.vue";
 
-	import SlideshowPosition from "@/model/slideshowPosition";
+	import SlideshowPosition from "@/model/slideshowPosition.ts";
 
 	export default defineComponent({
-		name: "Slideshow",
+		name: "BannerSlideshow",
 		components: { Icon },
 		props: {
             campaign: String,
 			slideshowIsVisible: Boolean,
-			slideshowPosition: SlideshowPosition,
+			slideshowPosition: Object as () => SlideshowPosition,
 			grid: Array,
             dimensions: Map,
 		},
