@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header></Header>
+		<AppHeader/>
 
         <main>
             <router-view />
@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts">
-    import { defineComponent } from '@vue/composition-api';
-    import Header from '@/components/Header.vue';
+    import { defineComponent } from 'vue';
+    import AppHeader from '@/components/Header.vue';
 
     export default defineComponent( {
         name: 'App',
         components: {
-            Header,
+            AppHeader,
         }
     } );
 </script>

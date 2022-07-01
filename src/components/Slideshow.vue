@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-	import { computed, defineComponent } from '@vue/composition-api';
+	import { computed, defineComponent } from 'vue';
 	import Icon from "@/components/Icon.vue";
 
 	import SlideshowPosition from "@/model/slideshowPosition.ts";

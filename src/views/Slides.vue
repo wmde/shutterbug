@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-    import { computed, defineComponent, onUnmounted, reactive, ref, toRefs, watchEffect } from '@vue/composition-api';
+    import { computed, defineComponent, onUnmounted, reactive, ref, toRefs, watchEffect } from 'vue';
     import Sidebar from '@/components/Sidebar.vue';
     import Stage from "@/components/Stage.vue";
     import SidebarToggle from "@/components/SidebarToggle.vue";

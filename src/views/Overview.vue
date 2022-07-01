@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, reactive, toRefs, watchEffect} from "@vue/composition-api";
+    import {defineComponent, reactive, toRefs, watchEffect} from "vue";
     import Icon from "@/components/Icon.vue";
 
     export default defineComponent( {
