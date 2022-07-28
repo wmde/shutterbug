@@ -37,7 +37,7 @@
 </template>
 
 <script>
-	import {computed, ref, watch, defineComponent} from '@vue/composition-api';
+	import {computed, ref, watch, defineComponent} from 'vue';
 	import {createDimensionCombinations} from "@/model/createDimensionCombinations";
 
 	export default defineComponent({
