@@ -19,7 +19,7 @@ const TestCaseRunType = Record({
 const DimensionMapRunType = Tuple(DimensionRunType, Array(String));
 
 const MetaDataRunType = Record({
-    createdOn: Number,
+    createdOn: Union(String,Number),
     campaign: String,
     dimensions: Array(DimensionMapRunType),
     testCases: Array(TestCaseRunType)
