@@ -10,10 +10,15 @@ const DimensionRunType = Union(
 
 const DimensionValueRunType = Tuple(DimensionRunType, String);
 
-const TestCaseRunType = Record({
-    invalidReason: Optional( String ),
+const TestCaseStateRunType = Record( {
+	stateName: String,
+	description: Optional(String)
+} );
+
+const TestCaseRunType = Record( {
     dimensions: Array(DimensionValueRunType),
-    bannerUrl: String
+    bannerUrl: String,
+	state: TestCaseStateRunType,
 } );
 
 const DimensionMapRunType = Tuple(DimensionRunType, Array(String));
@@ -28,6 +33,7 @@ const MetaDataRunType = Record({
 
 export type MetaData = Static<typeof MetaDataRunType>;
 export type TestCase = Static<typeof TestCaseRunType>;
+export type TestCaseState = Static<typeof TestCaseStateRunType>;
 
 export function parseMetadata(str: string): MetaData  {
     const parsed = JSON.parse(str);

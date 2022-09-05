@@ -34,7 +34,6 @@ describe('ScreenshotMetaData', () => {
         ],
         testCases: [
             {
-                "invalidReason": "Unsupported resolution",
                 "dimensions": [
                     [
                         "platform",
@@ -50,6 +49,10 @@ describe('ScreenshotMetaData', () => {
                     ]
                 ],
                 "bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+			"state": {
+				"stateName": "error",
+				"description": "Unsupported resolution"
+			}
             }
         ]
     };

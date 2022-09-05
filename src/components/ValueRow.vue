@@ -114,10 +114,6 @@ export default defineComponent( {
 		position: relative;
 		display: flex;
 
-		&.invalid {
-			border: solid 2px red;
-		}
-
 
 		&-content {
 			padding: 0 math.div($stage-gutter,2);
