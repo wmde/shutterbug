@@ -1,8 +1,10 @@
 <template>
     <header class="header">
         <div class="header--main">
-            <div class="logo">
-                <icon class="logo--icon" icon="camera"></icon> Shutterbug
+			<div class="logo">
+				<router-link to="/">
+					<icon class="logo--icon" icon="camera"></icon> Shutterbug
+				</router-link>
             </div>
         </div>
     </header>
@@ -30,7 +32,12 @@
             line-height: $header-height;
             height: $header-height;
             background: $header-background;
-        }
+		}
+
+		a {
+			text-decoration: none;
+			color: $font-color-light;
+		}
     }
 
     .logo {
