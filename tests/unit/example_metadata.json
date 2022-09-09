@@ -44,7 +44,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "edge__1024x768__ctrl.png"
+			"screenshotFilename": "edge__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -64,7 +68,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "edge__1280x960__ctrl.png"
+			"screenshotFilename": "edge__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -84,7 +92,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_win10__1024x768__ctrl.png"
+			"screenshotFilename": "firefox_win10__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -104,7 +116,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_win10__1280x960__ctrl.png"
+			"screenshotFilename": "firefox_win10__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -124,7 +140,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_win10__1024x768__ctrl.png"
+			"screenshotFilename": "chrome_win10__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -144,7 +164,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_win10__1280x960__ctrl.png"
+			"screenshotFilename": "chrome_win10__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -164,7 +188,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "ie11__1024x768__ctrl.png"
+			"screenshotFilename": "ie11__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -184,7 +212,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "ie11__1280x960__ctrl.png"
+			"screenshotFilename": "ie11__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -204,7 +236,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_macos__1024x768__ctrl.png"
+			"screenshotFilename": "firefox_macos__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -224,7 +260,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_macos__1280x960__ctrl.png"
+			"screenshotFilename": "firefox_macos__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -244,7 +284,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "safari__1024x768__ctrl.png"
+			"screenshotFilename": "safari__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -264,7 +308,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "safari__1280x960__ctrl.png"
+			"screenshotFilename": "safari__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -284,7 +332,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_macos__1024x768__ctrl.png"
+			"screenshotFilename": "chrome_macos__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -304,7 +356,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_macos__1280x960__ctrl.png"
+			"screenshotFilename": "chrome_macos__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -324,7 +380,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_linux__1024x768__ctrl.png"
+			"screenshotFilename": "firefox_linux__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -344,7 +404,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "firefox_linux__1280x960__ctrl.png"
+			"screenshotFilename": "firefox_linux__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -364,7 +428,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_linux__1024x768__ctrl.png"
+			"screenshotFilename": "chrome_linux__1024x768__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		},
 		{
 			"valid": true,
@@ -384,7 +452,11 @@
 				]
 			],
 			"bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
-			"screenshotFilename": "chrome_linux__1280x960__ctrl.png"
+			"screenshotFilename": "chrome_linux__1280x960__ctrl.png",
+			"state": {
+				"stateName": "finished",
+				"description": "Successfully took a screenshot"
+			}
 		}
 	]
 }

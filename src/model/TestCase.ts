@@ -1,4 +1,12 @@
-import { TestCase as RawTestCase } from "@/model/parseMetadata";
+import { TestCase as RawTestCase, TestCaseState } from "@/model/parseMetadata";
+
+
+const getInvalidReasonFromState = ( state: TestCaseState ): string => {
+	if ( state.stateName === 'finished' ) {
+		return '';
+	}
+	return state.description || '';
+}
 
 export class TestCase {
     readonly isValid: boolean;
@@ -24,7 +32,7 @@ export class TestCase {
 
     static fromObject( obj: RawTestCase ): TestCase {
         const dimensions = new Map<string, string>(obj.dimensions);
-        return new TestCase( dimensions, obj.bannerUrl, obj.invalidReason );
+        return new TestCase( dimensions, obj.bannerUrl, getInvalidReasonFromState( obj.state ) );
     }
 
 }

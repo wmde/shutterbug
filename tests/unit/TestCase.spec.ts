@@ -6,7 +6,10 @@ describe('TestCase', () => {
     describe( 'fromObject', () => {
         it('creates an instance', () => {
             const testCase = TestCase.fromObject( {
-                "invalidReason": "Unsupported resolution",
+                "state": {
+					"stateName": "error",
+					"description":"Unsupported resolution" 
+				},
                 "dimensions": [
                     [
                         "platform",

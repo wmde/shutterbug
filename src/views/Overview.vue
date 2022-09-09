@@ -25,7 +25,8 @@
 
 <script lang="ts">
     import {defineComponent, reactive, toRefs, watchEffect} from "vue";
-    import Icon from "@/components/Icon.vue";
+	import Icon from "@/components/Icon.vue";
+	import { compareCampaigns, SummarizedMetadata } from "@/model/compareCampaigns";
 
     export default defineComponent( {
         name: "ScreenshotOverview",
@@ -43,7 +44,9 @@
             watchEffect( () => {
                 fetch( 'screenshots/metadata_summary.json' )
                 .then( response => response.json() )
-                .then( campaigns => {
+				.then( ( campaigns: SummarizedMetadata[] ) => {
+					campaigns.sort( compareCampaigns );
+					campaigns.reverse();
                     overviewState.isLoading = false;
                     overviewState.folders = campaigns ;
                 } )
