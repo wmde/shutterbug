@@ -15,7 +15,7 @@
                         :to="`/slides/${folder.campaign}`">
                     <Icon :icon="'folder'" class="folder__icon"></Icon>
                     {{ folder.campaign }}<br>
-                    <i class="folder__info" >( {{ folder.testCaseCount }} tests )</i>
+                    <i class="folder__info" >( {{ folder.testCaseCount }} tests, generated on {{ folder.createdOn.replace("T"," ").replace(/[0-9.]{4}Z$/,"")}} )</i>
                 </router-link>
             </li>
         </ol>

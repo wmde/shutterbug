@@ -52,7 +52,7 @@
             height: 27px;
             margin-top: 16px;
             margin-left: 15px;
-            margin-right: $stage-gutter/2;
+            margin-right: calc($stage-gutter/2);
         }
     }
 </style>
