@@ -4,7 +4,7 @@ stages:
     - deploy
 
 test:
-    image: node:17-alpine
+    image: node:19-alpine
     stage: test
     script:
         - npm install
@@ -22,7 +22,7 @@ test:
             path: coverage/cobertura-coverage.xml
 
 build-artifacts:
-    image: node:18-alpine
+    image: node:19-alpine
     stage: package
     script:
         - npm install
