@@ -24,3 +24,4 @@
 	solutions
 - [ ] Hide unneccessary columns, e.g. show only Firefox A/B tests.
 - [ ] Have a set of preset selections for common comparisons.
+- [ ] might need to be able to show different text sizes in the future (because the new wikipedia skin allows to change it)
