@@ -7,9 +7,9 @@
 		</div>
 		<ol v-if="!isLoading" class="folders">
 			<li v-for="( channelFolders, channelName)  in folders" :key="channelName" class="channelArea">
-				<span class="channelArea--headline">{{ channelName }}</span>
+				<h3 class="channelArea__headline">{{ channelName }}</h3>
 
-				<ol class="channelArea--folder-list">
+				<ol class="channelArea__folder-list">
 					<li v-for="subFolder in channelFolders"
 						:key="subFolder.campaign"
 						class="folders__item folder">
@@ -98,8 +98,8 @@ export default defineComponent( {
 @import "../assets/settings";
 
 .page-overview {
-	margin-top: $header-height;
-	padding: $header-height;
+	margin-top: 30px;
+	padding: 45px;
 	height: 100vH;
 
 	&-heading {
@@ -107,26 +107,26 @@ export default defineComponent( {
 	}
 
 	.channelArea {
-		width: 26%;
-		margin: 15px 30px;
-
-		&--headline {
-			font-weight: bold;
-			font-size: 20px;
-
-			border: 2px solid grey;
-			border-bottom: 0;
-			padding: 5px 5px 0;
-			border-radius: 8px 8px 0 0;
+		width: 45%;
+		margin: 0 0 0 35px;
+		
+		@media (min-width: 1100px) {
+			width: 30%;
 		}
 
-		&--folder-list {
-			height: 50vH;
+		&__headline {
+			display: inline-block;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		&__folder-list {
+			height: 36vH;
 			overflow: scroll;
-			border: 2px solid #000000;
+			border: 1px solid #808080;
 			padding-top: 15px;
 			padding-bottom: 15px;
-			background: #edf1ea;
+			background: #d5d5d5;
 		}
 	}
 
@@ -139,10 +139,6 @@ export default defineComponent( {
 
 		&__item {
 			width: 100%;
-
-			@media (min-width: 950px) {
-				width: 50%;
-			}
 		}
 	}
 
@@ -158,10 +154,10 @@ export default defineComponent( {
 			text-decoration: none;
 			color: $font-color-dark;
 			background: #ffffff;
-			margin: 0 math.div($stage-gutter, 2) 15px;
+			margin: 0 12px 10px 10px;
 			padding: 15px 15px 15px 80px;
 			border: 1px solid $border-color;
-			border-radius: 8px;
+			border-radius: 3px;
 			box-shadow: 2px 2px gray;
 
 			&:hover, &:focus {
