@@ -56,19 +56,28 @@ export default defineComponent( {
 
 		const splitCampaignsIntoChannelFolders = ( overviewState, campaigns ) => {
 			const desktopDERegex = new RegExp( /^\d{2}/ );
-			overviewState.folders.desktop_de = campaigns.filter( ( { campaign } ) => campaign.match( desktopDERegex ) );
-
 			const mobileDERegex = new RegExp( /^mob-\d{2}/ );
-			overviewState.folders.mobile_de = campaigns.filter( ( { campaign } ) => campaign.match( mobileDERegex ) );
-
 			const padDERegex = new RegExp( /^pad/ );
-			overviewState.folders.pad_de = campaigns.filter( ( { campaign } ) => campaign.match( padDERegex ) );
-
 			const desktopENRegex = new RegExp( /^en/ );
-			overviewState.folders.desktop_en = campaigns.filter( ( { campaign } ) => campaign.match( desktopENRegex ) );
-
 			const mobileENRegex = new RegExp( /^mob_en/ );
-			overviewState.folders.mobile_en = campaigns.filter( ( { campaign } ) => campaign.match( mobileENRegex ) );
+
+			campaigns.forEach( ( campaign ) => {
+				if( campaign.campaign.match( desktopDERegex ) ) {
+					overviewState.folders.desktop_de.push( campaign );
+				}
+				else if ( campaign.campaign.match( mobileDERegex ) ) {
+					overviewState.folders.mobile_de.push( campaign );
+				}
+				else if( campaign.campaign.match( padDERegex ) ) {
+					overviewState.folders.pad_de.push( campaign );
+				}
+				else if( campaign.campaign.match( desktopENRegex ) ) {
+					overviewState.folders.desktop_en.push( campaign );
+				}
+				else if( campaign.campaign.match( mobileENRegex ) ) {
+					overviewState.folders.mobile_en.push( campaign );
+				}
+			} )
 		}
 
 		const overviewState = reactive( overviewStateInit );
@@ -109,7 +118,7 @@ export default defineComponent( {
 	.channelArea {
 		width: 45%;
 		margin: 0 0 0 35px;
-		
+
 		@media (min-width: 1100px) {
 			width: 30%;
 		}
