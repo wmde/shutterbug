@@ -56,7 +56,7 @@ export default defineComponent( {
 
 		const splitCampaignsIntoChannelFolders = ( overviewState, campaigns ) => {
 			const desktopDERegex = new RegExp( /^\d{2}/ );
-			const mobileDERegex = new RegExp( /^mob-\d{2}/ );
+			const mobileDERegex = new RegExp( /^mob(-de|\d{2})/ );
 			const padDERegex = new RegExp( /^pad/ );
 			const desktopENRegex = new RegExp( /^en/ );
 			const mobileENRegex = new RegExp( /^mob_en/ );
