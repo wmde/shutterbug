@@ -6,6 +6,7 @@ const DimensionRunType = Union(
     Literal('orientation'),
     Literal('platform'),
     Literal('resolution'),
+    Literal('darkmode'),
 );
 
 const DimensionValueRunType = Tuple(DimensionRunType, String);
@@ -17,6 +18,7 @@ const TestCaseStateRunType = Record( {
 
 const TestCaseRunType = Record( {
     dimensions: Array(DimensionValueRunType),
+	screenshotFilename: String,
     bannerUrl: String,
 	state: TestCaseStateRunType,
 } );
