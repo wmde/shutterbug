@@ -25,6 +25,7 @@ describe('TestCase', () => {
                     ]
                 ],
                 "bannerUrl": "https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner=B20_WMDE_Test_Desktop",
+                "screenshotFilename": 'edge__1024x768__ctrl.png',
             } );
 
             expect( testCase.screenshotFilename ).toBe( 'edge__1024x768__ctrl.png' );

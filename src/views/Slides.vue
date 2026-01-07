@@ -44,7 +44,7 @@
     import Slideshow from "@/components/Slideshow.vue";
 
     import {ScreenshotMetaData} from "@/model/ScreenshotMetaData";
-    import {BANNER, DEVICE, PLATFORM, ORIENTATION, RESOLUTION} from "@/model/Dimensions";
+    import {BANNER, DEVICE, PLATFORM, ORIENTATION, RESOLUTION, DARKMODE} from "@/model/Dimensions";
     import {createGrid} from "@/model/createGrid";
     import SlideshowPosition from "@/model/slideshowPosition";
     import {createDimensionCombinations} from "@/model/createDimensionCombinations";
@@ -72,7 +72,7 @@
 
             // TODO Talk to others to come up with the best order
             // TODO switch BROWSER and BANNER when we have A/B test cases in the example/live data
-            const preferredOrderOfDimensions = [ BANNER, DEVICE, RESOLUTION, PLATFORM, ORIENTATION ];
+            const preferredOrderOfDimensions = [ BANNER, DEVICE, RESOLUTION, PLATFORM, ORIENTATION, DARKMODE ];
             const metaDataInit: MetadataState = {
                 isLoading: true,
                 metaData: null,

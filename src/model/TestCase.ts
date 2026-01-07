@@ -12,8 +12,8 @@ export class TestCase {
     readonly isValid: boolean;
     readonly screenshotFilename: string;
 
-    constructor( readonly dimensions: Map<string,string>, readonly bannerUrl: string, readonly invalidReason: string = '' ) {
-        this.screenshotFilename = [ ...dimensions.values() ].join( '__' ) + '.png';
+    constructor( readonly dimensions: Map<string,string>, readonly screenshotFilename: string, readonly bannerUrl: string, readonly invalidReason: string = '' ) {
+        this.screenshotFilename = screenshotFilename;
         this.isValid = invalidReason === '';
     }
 
@@ -32,7 +32,7 @@ export class TestCase {
 
     static fromObject( obj: RawTestCase ): TestCase {
         const dimensions = new Map<string, string>(obj.dimensions);
-        return new TestCase( dimensions, obj.bannerUrl, getInvalidReasonFromState( obj.state ) );
+        return new TestCase( dimensions, obj.screenshotFilename, obj.bannerUrl, getInvalidReasonFromState( obj.state ) );
     }
 
 }
