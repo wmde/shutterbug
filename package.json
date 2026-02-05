@@ -13,7 +13,7 @@
     "core-js": "^3.10.1",
     "runtypes": "^6.0.0",
     "vue": "^2.6.12",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.6.5"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
