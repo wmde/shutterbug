@@ -1,0 +1,12 @@
+steps:
+    -   name: build
+        when:
+            - event: [ push, pull_request, cron, manual ]
+              branch:
+                  exclude: [ dependabot/* ]
+        image: node:22-alpine
+        commands:
+            - npm ci
+            - npm run lint
+            - npm run test:unit
+            - npm run build
