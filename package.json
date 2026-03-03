@@ -11,7 +11,7 @@
   "dependencies": {
     "core-js": "^3.10.1",
     "runtypes": "^6.0.0",
-    "vue": "^3.2",
+    "vue": "^3.5",
     "vue-router": "^4.0"
   },
   "devDependencies": {
