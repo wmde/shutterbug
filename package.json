@@ -9,22 +9,27 @@
     "lint": "eslint --ext .ts,.vue src tests"
   },
   "dependencies": {
-    "core-js": "^3.10.1",
-    "runtypes": "^6.0.0",
-    "vue": "^3.5",
-    "vue-router": "^5.0"
+    "core-js": "^3.49.0",
+    "runtypes": "^7.0.4",
+    "vue": "^3.5.31",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.25.0",
-    "@vue/eslint-config-typescript": "^11.0.0",
-    "eslint": "^8.0.0",
-    "eslint-plugin-vue": "^9.0.0",
-    "sass": "^1.32.11",
-    "typescript": "~4.9.0",
-    "vite": "^5.4",
-    "vitest": "^4.0.18"
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.2",
+    "@vitest/eslint-plugin": "^1.6.14",
+    "@vue/eslint-config-typescript": "^14.7.0",
+    "eslint": "^10.2.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "globals": "^17.4.0",
+    "jiti": "^2.6.1",
+    "sass": "^1.99.0",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
   }
 }
