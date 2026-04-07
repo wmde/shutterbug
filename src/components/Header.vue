@@ -19,30 +19,30 @@
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @use "../assets/settings";
 
     .header {
         position: fixed;
         top: 0;
         width: 100%;
-        height: $header-height;
+        height: settings.$header-height;
         z-index: 99;
 
         &--main {
-            line-height: $header-height;
-            height: $header-height;
-            background: $header-background;
+            line-height: settings.$header-height;
+            height: settings.$header-height;
+            background: settings.$header-background;
 		}
 
 		a {
 			text-decoration: none;
-			color: $font-color-light;
+			color: settings.$font-color-light;
 		}
     }
 
     .logo {
         font-weight: bold;
-        color: $font-color-light;
+        color: settings.$font-color-light;
         font-size: 20px;
 
         &--icon {
@@ -52,7 +52,7 @@
             height: 27px;
             margin-top: 16px;
             margin-left: 15px;
-            margin-right: calc($stage-gutter/2);
+            margin-right: calc( #{ settings.$stage-gutter } / 2 );
         }
     }
 </style>

@@ -104,7 +104,8 @@ export default defineComponent( {
 </script>
 
 <style lang="scss">
-@import "../assets/settings";
+@use "../assets/settings";
+@use "sass:math";
 
 .page-overview {
 	margin-top: 30px;
@@ -140,7 +141,7 @@ export default defineComponent( {
 	}
 
 	.folders {
-		margin: 0 math.div(-$stage-gutter, 2);
+		margin: 0 math.div( settings.$stage-gutter * -1, 2 );
 		display: flex;
 		flex-wrap: wrap;
 		align-content: stretch;
@@ -161,16 +162,16 @@ export default defineComponent( {
 			position: relative;
 			display: block;
 			text-decoration: none;
-			color: $font-color-dark;
+			color: settings.$font-color-dark;
 			background: #ffffff;
 			margin: 0 12px 10px 10px;
 			padding: 15px 15px 15px 80px;
-			border: 1px solid $border-color;
+			border: 1px solid settings.$border-color;
 			border-radius: 3px;
 			box-shadow: 2px 2px gray;
 
 			&:hover, &:focus {
-				border-color: $overview-border-hover;
+				border-color: settings.$overview-border-hover;
 			}
 		}
 
@@ -188,7 +189,7 @@ export default defineComponent( {
 		}
 
 		&__info {
-			color: $font-color-secondary;
+			color: settings.$font-color-secondary;
 			font-size: 14px;
 		}
 	}

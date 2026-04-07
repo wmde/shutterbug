@@ -19,12 +19,3 @@
         }
     } );
 </script>
-
-<style lang="scss">
-    @import 'src/assets/reset';
-    @import 'src/assets/global';
-
-    #app {
-
-    }
-</style>

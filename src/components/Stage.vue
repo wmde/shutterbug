@@ -32,7 +32,7 @@
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @use "../assets/settings";
 
     .stage {
         position: fixed;
@@ -41,14 +41,14 @@
         left: 0;
         height: 100%;
 
-        transition: margin-left $transition-ease;
+        transition: margin-left settings.$transition-ease;
 
         &.sidebar-is-visible {
-            margin-left: $sidebar-width;
+            margin-left: settings.$sidebar-width;
         }
 
         &--content {
-            margin-top: $header-height + $axis-size;
+            margin-top: settings.$header-height + settings.$axis-size;
         }
     }
 </style>
