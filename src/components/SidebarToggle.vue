@@ -16,26 +16,26 @@
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @use "../assets/settings";
 
     .sidebar-toggle {
         border-collapse: collapse;
         position: fixed;
         display: block;
-        top: $header-height;
+        top: settings.$header-height;
         left: 0;
-        height: $axis-size;
-        width: $axis-size;
-        background: $sidebar-toggle-background;
+        height: settings.$axis-size;
+        width: settings.$axis-size;
+        background: settings.$sidebar-toggle-background;
         z-index: 99;
         border: 0;
         margin: 0;
         padding: 0;
         cursor: pointer;
-        transition: left $transition-ease;
+        transition: left settings.$transition-ease;
 
         &.sidebar-is-visible {
-            left: $sidebar-width;
+            left: settings.$sidebar-width;
         }
 
         &--icon {

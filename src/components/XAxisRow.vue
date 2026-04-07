@@ -16,25 +16,25 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @use "../assets/settings";
 
     .x-axis-row {
         position: fixed;
-        top: $header-height;
+        top: settings.$header-height;
         right: 0;
         left: 0;
-        background: $axis-background-color;
-        height: $axis-size;
-        line-height: $axis-size;
+        background: settings.$axis-background-color;
+        height: settings.$axis-size;
+        line-height: settings.$axis-size;
         font-weight: normal;
         font-size: 16px;
-        padding-left: $axis-size;
+        padding-left: settings.$axis-size;
         z-index: 99;
 
-        transition: left $transition-ease;
+        transition: left settings.$transition-ease;
 
         &.sidebar-is-visible {
-            left: $sidebar-width;
+            left: settings.$sidebar-width;
         }
     }
 

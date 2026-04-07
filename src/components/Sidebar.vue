@@ -100,30 +100,30 @@
 </script>
 
 <style lang="scss">
-    @import "src/assets/settings";
+    @use "../assets/settings";
 
     .sidebar {
         position: fixed;
-        width: $sidebar-width;
+        width: settings.$sidebar-width;
         height: 100%;
-        left: -$sidebar-width;
-        background: $sidebar-background;
+        left: -#{ settings.$sidebar-width };
+        background: settings.$sidebar-background;
 
-        transition: left $transition-ease;
+        transition: left settings.$transition-ease;
 
         &.is-visible {
             left: 0;
         }
 
         &__content {
-            margin-top: $header-height;
+            margin-top: settings.$header-height;
             padding: 20px;
         }
 
         &__button {
-            background: $sidebar-button-background;
-            color: $sidebar-button-color;
-            font-family: $font-family;
+            background: settings.$sidebar-button-background;
+            color: settings.$sidebar-button-color;
+            font-family: settings.$font-family;
             font-weight: bold;
             display: block;
             border: 0;
@@ -138,7 +138,7 @@
             left: 20px;
 
             a {
-                color: $font-color-light;
+                color: settings.$font-color-light;
             }
         }
 
@@ -149,7 +149,7 @@
         }
 
         legend {
-            color: $font-color-light;
+            color: settings.$font-color-light;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
@@ -161,10 +161,10 @@
         }
 
         select {
-            border: 1px solid $sidebar-background;
+            border: 1px solid settings.$sidebar-background;
             width: 100%;
             padding: 10px;
-            font-family: $font-family;
+            font-family: settings.$font-family;
 
             -moz-appearance: none;
             -webkit-appearance: none;
@@ -181,7 +181,7 @@
             }
 
             &:focus {
-                border-color: $sidebar-button-background;
+                border-color: settings.$sidebar-button-background;
                 outline: none;
             }
         }

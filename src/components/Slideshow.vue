@@ -92,7 +92,7 @@
 </script>
 
 <style lang="scss">
-    @import 'src/assets/settings';
+    @use '../assets/settings';
 
     .slideshow {
         position: fixed;
@@ -100,14 +100,14 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: $slideshow-background;
+        background: settings.$slideshow-background;
         z-index: 100;
-        color: $font-color-light;
+        color: settings.$font-color-light;
 
         visibility: hidden;
         transform: scale(1.2);
         opacity: 0;
-        transition: transform $transition-ease, opacity $transition-ease, visibility $transition-ease;
+        transition: transform settings.$transition-ease, opacity settings.$transition-ease, visibility settings.$transition-ease;
 
         &.is-visible {
             visibility: visible;
@@ -119,7 +119,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: $sidebar-width;
+            width: settings.$sidebar-width;
             height: 100%;
             background: #000;
             padding: 80px 20px 20px;
@@ -128,7 +128,7 @@
         &--screenshot {
             position: absolute;
             top: 0;
-            left: $sidebar-width;
+            left: settings.$sidebar-width;
             right: 0;
             height: 100%;
             overflow-y: auto;

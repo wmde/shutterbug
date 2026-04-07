@@ -65,42 +65,43 @@ export default defineComponent( {
 </script>
 
 <style lang="scss">
-@import "src/assets/settings";
+@use "../assets/settings";
+@use "sass:math";
 
 .row {
 	position: relative;
 	display: flex;
 	flex-wrap: nowrap;
-	padding-bottom: $row-padding;
-	padding-left: $axis-size;
+	padding-bottom: settings.$row-padding;
+	padding-left: settings.$axis-size;
 
 	&:after {
 		position: absolute;
 		content: '';
-		bottom: math.div($row-padding,2);
+		bottom: math.div( settings.$row-padding, 2 );
 		right: 0;
-		left: $axis-size;
-		border-bottom: 1px dashed $border-color;
+		left: settings.$axis-size;
+		border-bottom: 1px dashed settings.$border-color;
 	}
 
 	&--label {
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: $axis-background-color;
-		width: $axis-size;
+		background: settings.$axis-background-color;
+		width: settings.$axis-size;
 		height: 100%;
-		color: $axis-color;
-		padding-bottom: $row-padding;
+		color: settings.$axis-color;
+		padding-bottom: settings.$row-padding;
 
 		&-text {
 			position: absolute;
 			top: 50%;
-			margin-top: -$axis-size;
+			margin-top: -#{ settings.$axis-size };
 			display: block;
-			height: $axis-size;
-			line-height: $axis-size;
-			width: $axis-size;
+			height: settings.$axis-size;
+			line-height: settings.$axis-size;
+			width: settings.$axis-size;
 			text-align: center;
 			white-space: nowrap;
 			font-size: 16px;
@@ -116,11 +117,11 @@ export default defineComponent( {
 
 
 		&-content {
-			padding: 0 math.div($stage-gutter,2);
+			padding: 0 math.div( settings.$stage-gutter, 2 );
 			display: block;
 			width: 100%;
 			min-height: 100px;
-			color: $font-color-dark;
+			color: settings.$font-color-dark;
 			text-decoration: none;
 			text-align: center;
 		}
@@ -156,8 +157,8 @@ export default defineComponent( {
 			position: absolute;
 			top: 0;
 			height: 100%;
-			left: math.div($stage-gutter,2);
-			right: math.div($stage-gutter,2);
+			left: math.div( settings.$stage-gutter, 2 );
+			right: math.div( settings.$stage-gutter, 2 );
 			background: #eeeeee;
 			font-size: 12px;
 
